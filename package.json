@@ -4,7 +4,15 @@
   "private": true,
   "author": "iliana etaoin <iliana@buttslol.net>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext .js ."
+  },
   "dependencies": {
     "cesium": "^1.74.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
   }
 }
