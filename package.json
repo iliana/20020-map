@@ -1,0 +1,10 @@
+{
+  "name": "20020-map",
+  "version": "1.0.0",
+  "private": true,
+  "author": "iliana etaoin <iliana@buttslol.net>",
+  "license": "MIT",
+  "dependencies": {
+    "cesium": "^1.74.0"
+  }
+}
