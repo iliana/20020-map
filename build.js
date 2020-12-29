@@ -136,6 +136,7 @@ async function main() {
       .then((ts) => ts.filter((team) => team !== undefined))
       .then((ts) => ts.map((team) => ({
         ...team,
+        color: Cesium.Color.pack(Cesium.Color.fromCssColorString(team.color), [], 0),
         line: [team.line.start.longitude, team.line.start.latitude,
           team.line.end.longitude, team.line.end.latitude],
       })))),
