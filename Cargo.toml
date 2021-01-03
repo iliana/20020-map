@@ -1,0 +1,20 @@
+[package]
+name = "navarro"
+version = "0.1.0"
+authors = ["iliana etaoin <iliana@buttslol.net>"]
+repository = "https://github.com/iliana/20020-map"
+edition = "2018"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1"
+askama = "0.10"
+derive_more = "0.99"
+hex = "0.4"
+itertools = "0.10"
+lazy_static = "1"
+regex = "1"
+uom = "0.30"
+zip = "0.5"
