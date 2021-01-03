@@ -1,8 +1,8 @@
 /* global Cesium */
 
 Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(
-  -124.725839, 24.669463,
-  -66.949895, 49.384358,
+  -124.725839, 26.169463,
+  -66.949895, 50.884358,
 );
 Cesium.Camera.DEFAULT_VIEW_FACTOR = 0.01;
 
@@ -16,9 +16,6 @@ const viewer = new Cesium.Viewer('map', {
   infoBox: false,
   requestRenderMode: true,
   sceneModePicker: false,
-  terrainProvider: new Cesium.ArcGISTiledElevationTerrainProvider({
-    url: 'https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer',
-  }),
   timeline: false,
 });
 

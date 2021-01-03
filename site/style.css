@@ -1,6 +1,38 @@
-html, body, #map {
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+    font-family: sans-serif;
+}
+
+header {
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(0, 0, 0, 75%);
+    color: white;
+    padding: 0.5em;
+}
+
+header a {
+    color: lightblue;
+}
+
+header a:visited {
+    color: plum;
+}
+
+#map {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+#map .cesium-viewer-toolbar {
+    z-index: 20;
 }

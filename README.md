@@ -1,10 +1,15 @@
-## map surveying
+# 20020 Bowl Game map project
 
-Use Google Earth Pro and fly to a college football stadium. [20020 team list](https://docs.google.com/spreadsheets/d/19Amwc2L64pX_mQWXDVMir0a7JLqknaKNRjQdpLypOwU/edit#gid=0)
+This is a project to recreate the map for the Bowl Game, as envisioned in Secret Base's [_20020_](https://www.sbnation.com/secret-base/21410129/20020), as a KML file.
 
-Put 10 markers at the intersections of the hash marks and the 10, 30, and 50 yard lines. I've been surveying them at an eye altitude of 25 meters.
+The best way to help right now is with field surveying. [Here's the process.](survey/README.md)
 
-![image](https://user-images.githubusercontent.com/52814/95717706-34409080-0c22-11eb-8d63-63d4ef12e9cb.png)
-![image](https://user-images.githubusercontent.com/52814/95717712-373b8100-0c22-11eb-8ba8-d21bd08924bb.png)
+Progress:
+- [x] List of all teams and colors
+- [ ] [Survey](survey/) all 111 fields
+- [x] Draw field guide lines in KML
+- [ ] Draw fields in KML
+- [ ] Draw field markers (e.g. "LOU" where the 0 yard line is) in KML
 
-Export the KML for those markers. File names use the team names in `data/teams.csv`.
+Stretch goals:
+- Web version: Zoom to any yard line on any field
