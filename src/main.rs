@@ -34,7 +34,11 @@ fn main() -> anyhow::Result<()> {
             Err(e) if e.kind() == ErrorKind::NotFound => continue,
             Err(e) => return Err(e.into()),
         })?;
-        let survey = survey::hash_mark_survey(&coordinates);
+        let survey = if coordinates.len() == 10 {
+            survey::hash_mark_survey(&coordinates)
+        } else {
+            survey::linear_regression_survey(&coordinates)
+        };
         let segment = boundary.limit(&survey).ok_or(Error::BoundaryLimit)?;
         fields.push(Field {
             name: team.name,
