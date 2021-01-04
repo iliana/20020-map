@@ -3,6 +3,15 @@
 <Document>
 	<name>Georgia Tech.kml</name>
 	<open>1</open>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
@@ -38,7 +47,26 @@
 			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
 		</IconStyle>
 	</Style>
+	<Style id="s_ylw-pushpin_hl1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+	</Style>
 	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin00">
 		<Pair>
 			<key>normal</key>
 			<styleUrl>#s_ylw-pushpin0</styleUrl>
@@ -48,7 +76,7 @@
 			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="s_ylw-pushpin0">
+	<Style id="s_ylw-pushpin1">
 		<IconStyle>
 			<scale>1.1</scale>
 			<Icon>
@@ -228,7 +256,7 @@
 			<range>640.4402342518647</range>
 			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 		</LookAt>
-		<styleUrl>#m_ylw-pushpin0</styleUrl>
+		<styleUrl>#m_ylw-pushpin00</styleUrl>
 		<Point>
 			<gx:drawOrder>1</gx:drawOrder>
 			<coordinates>-84.39408990251486,33.58465159865221,0</coordinates>
@@ -245,7 +273,7 @@
 			<roll>-4.232436929580065</roll>
 			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 		</Camera>
-		<styleUrl>#m_ylw-pushpin0</styleUrl>
+		<styleUrl>#m_ylw-pushpin00</styleUrl>
 		<Point>
 			<gx:drawOrder>1</gx:drawOrder>
 			<coordinates>-84.39619825778061,33.23421308876061,0</coordinates>
@@ -262,10 +290,85 @@
 			<range>510.697819972842</range>
 			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 		</LookAt>
-		<styleUrl>#m_ylw-pushpin0</styleUrl>
+		<styleUrl>#m_ylw-pushpin00</styleUrl>
 		<Point>
 			<gx:drawOrder>1</gx:drawOrder>
 			<coordinates>-84.3965802545639,33.17199792134912,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>Untitled Placemark</name>
+		<LookAt>
+			<longitude>-84.39012201559241</longitude>
+			<latitude>34.21833072180122</latitude>
+			<altitude>0</altitude>
+			<heading>0.01004670019097817</heading>
+			<tilt>0</tilt>
+			<range>172.0507674299975</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#m_ylw-pushpin0</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>-84.39011281494234,34.21838998186097,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>Untitled Placemark</name>
+		<LookAt>
+			<longitude>-84.39048877529321</longitude>
+			<latitude>34.22105494747261</latitude>
+			<altitude>0</altitude>
+			<heading>0.009840442308742559</heading>
+			<tilt>0</tilt>
+			<range>249.5532729631998</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#m_ylw-pushpin0</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>-84.39009565205579,34.22120961693708,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>Untitled Placemark</name>
+		<LookAt>
+			<longitude>-84.38005659022627</longitude>
+			<latitude>35.91291978956976</latitude>
+			<altitude>0</altitude>
+			<heading>0.03688895730226831</heading>
+			<tilt>0</tilt>
+			<range>422.1488910645652</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#m_ylw-pushpin0</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>-84.37971144954726,35.91304989337392,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>Untitled Placemark</name>
+		<LookAt>
+			<gx:TimeStamp><when>2018-04-13</when>
+</gx:TimeStamp>
+			<gx:ViewerOptions>
+				<gx:option name="historicalimagery"></gx:option>
+				<gx:option enabled="0" name="sunlight"></gx:option>
+				<gx:option enabled="0" name="streetview"></gx:option>
+			</gx:ViewerOptions>
+			<longitude>-84.37906490680318</longitude>
+			<latitude>36.01534775294266</latitude>
+			<altitude>0</altitude>
+			<heading>0.84448838720436</heading>
+			<tilt>0</tilt>
+			<range>167.2950816693723</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#m_ylw-pushpin0</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>-84.37906986011274,36.01517793607126,0</coordinates>
 		</Point>
 	</Placemark>
 </Document>
