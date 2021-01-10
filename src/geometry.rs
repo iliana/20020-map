@@ -12,7 +12,7 @@ pub(crate) struct Cartographic {
 }
 
 impl Cartographic {
-    fn geodesic(&self, heading: Angle, distance: Length) -> Cartographic {
+    pub(crate) fn destination(&self, heading: Angle, distance: Length) -> Cartographic {
         let (lat, lon) = Geodesic::wgs84().direct(
             self.latitude.get::<degree>(),
             self.longitude.get::<degree>(),
@@ -40,16 +40,16 @@ impl LatLonBox {
     pub(crate) fn new(center: Cartographic, height: Length, width: Length) -> LatLonBox {
         LatLonBox {
             north: center
-                .geodesic(Angle::new::<radian>(0.0), height / 2.0)
+                .destination(Angle::new::<radian>(0.0), height / 2.0)
                 .latitude,
             south: center
-                .geodesic(Angle::new::<radian>(0.0), -height / 2.0)
+                .destination(Angle::new::<radian>(0.0), -height / 2.0)
                 .latitude,
             east: center
-                .geodesic(Angle::new::<radian>(FRAC_PI_2), width / 2.0)
+                .destination(Angle::new::<radian>(FRAC_PI_2), width / 2.0)
                 .longitude,
             west: center
-                .geodesic(Angle::new::<radian>(FRAC_PI_2), -width / 2.0)
+                .destination(Angle::new::<radian>(FRAC_PI_2), -width / 2.0)
                 .longitude,
         }
     }
@@ -163,7 +163,7 @@ impl MercatorLine {
     }
 
     pub(crate) fn heading(self) -> Angle {
-        Angle::new::<radian>(self.slope.atan() + FRAC_PI_2)
+        Angle::new::<radian>(FRAC_PI_2 - self.slope.atan())
     }
 
     pub(crate) fn intersection(self, other: MercatorLine) -> Option<Mercator> {

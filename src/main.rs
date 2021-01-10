@@ -11,16 +11,20 @@ use crate::geometry::{Cartographic, LatLonBox};
 use crate::output::{Field, Output};
 use askama::Template;
 use hex::FromHex;
+use std::f64::consts::FRAC_PI_2;
 use std::fmt;
 use std::fs::{self, File};
 use std::io::{self, Cursor, ErrorKind};
 use std::path::Path;
 use std::str::FromStr;
-use uom::si::f64::Length;
+use uom::si::angle::radian;
+use uom::si::f64::{Angle, Length};
 use uom::si::length::foot;
 use zip::ZipWriter;
 
 lazy_static::lazy_static! {
+    static ref QUARTER_TURN: Angle = Angle::new::<radian>(FRAC_PI_2);
+    static ref FIELD_WIDTH_HALF: Length = Length::new::<foot>(80.0);
     static ref LABEL_HEIGHT: Length = Length::new::<foot>(180_000.0);
     static ref LABEL_WIDTH: Length = Length::new::<foot>(80_000.0);
     static ref LABEL_DIAGONAL: Length = ((*LABEL_HEIGHT).powi(uom::typenum::P2::new())
@@ -52,17 +56,33 @@ fn main() -> anyhow::Result<()> {
         } else {
             survey::linear_regression_survey(&coordinates)
         };
-        let field = Cartographic::from(survey.field);
+        let center = Cartographic::from(survey.field);
+        let heading = survey.line.heading();
+        let cross = heading - *QUARTER_TURN;
+
         let line = boundary.limit(&survey).ok_or(Error::BoundaryLimit)?.plot();
+        let mut field = Vec::with_capacity(line.len() * 2);
+        field.extend(
+            line.iter()
+                .copied()
+                .map(|point| point.destination(cross, *FIELD_WIDTH_HALF)),
+        );
+        field.extend(
+            line.iter()
+                .copied()
+                .rev()
+                .map(|point| point.destination(cross, -*FIELD_WIDTH_HALF)),
+        );
 
         labels.push((format!("{}.png", team.name), label::render(&team)?));
         fields.push(Field {
             name: team.name,
             color: team.color,
+            field,
             line,
-            label_box: LatLonBox::new(field, *LABEL_HEIGHT, *LABEL_WIDTH),
-            label_heading: survey.line.heading(),
-            label_region_box: LatLonBox::new(field, *LABEL_DIAGONAL, *LABEL_DIAGONAL),
+            label_box: LatLonBox::new(center, *LABEL_HEIGHT, *LABEL_WIDTH),
+            label_heading: Angle::HALF_TURN - heading,
+            label_region_box: LatLonBox::new(center, *LABEL_DIAGONAL, *LABEL_DIAGONAL),
         });
     }
 

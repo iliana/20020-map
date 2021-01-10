@@ -64,8 +64,36 @@
                 </LineString>
                 <Style>
                     <LineStyle>
-                        <color>{{ field.color|kml_color }}</color>
+                        <color>{{ field.color|kml_color(1.0) }}</color>
                         <width>3</width>
+                    </LineStyle>
+                </Style>
+            </Placemark>
+            {% endfor %}
+        </Folder>
+        <Folder>
+            <name>Fields</name>
+            {% for field in fields %}
+            <Placemark>
+                <name>{{ field.name }}</name>
+                <Polygon>
+                    <altitudeMode>clampToGround</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing>
+                            <coordinates>
+                                {% for coordinate in field.field -%}
+                                {{ coordinate|kml_coord }}
+                                {% endfor %}
+                            </coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+                <Style>
+                    <PolyStyle>
+                        <color>{{ field.color|kml_color(0.7) }}</color>
+                    </PolyStyle>
+                    <LineStyle>
+                        <width>0</width>
                     </LineStyle>
                 </Style>
             </Placemark>
