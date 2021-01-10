@@ -11,7 +11,7 @@ Progress:
 - [ ] [Survey](survey/) all 111 fields
 - [x] Draw field guide lines in KML
 - [ ] Draw fields in KML
-- [ ] Draw field markers (e.g. "LOU" where the 0 yard line is) in KML
+- [x] Draw field markers (e.g. "LOU" where the 0 yard line is) in KML
 
 Stretch goals:
 - Web version: Zoom to any yard line on any field

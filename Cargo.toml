@@ -21,6 +21,6 @@ oxipng = { version = "4", default-features = false, features = ["parallel"] }
 regex = "1"
 resvg = "0.13"
 tiny-skia = "0.3"
-uom = "0.30"
+uom = "0.31"
 usvg = "0.13"
 zip = "0.5"
