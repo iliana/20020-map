@@ -13,7 +13,6 @@ pub(crate) struct Field {
     pub(crate) name: String,
     pub(crate) color: [u8; 3],
     pub(crate) line: Vec<Cartographic>,
-    pub(crate) label: Vec<u8>,
     pub(crate) label_box: LatLonBox,
     pub(crate) label_heading: Angle,
     pub(crate) label_region_box: LatLonBox,

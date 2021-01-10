@@ -33,6 +33,7 @@ fn main() -> anyhow::Result<()> {
     )?)?;
 
     let mut fields: Vec<Field> = Vec::new();
+    let mut labels: Vec<(String, Vec<u8>)> = Vec::new();
     for line in fs::read_to_string(root().join("data").join("teams.csv"))?
         .lines()
         .skip(1)
@@ -54,14 +55,14 @@ fn main() -> anyhow::Result<()> {
         let field = Cartographic::from(survey.field);
         let line = boundary.limit(&survey).ok_or(Error::BoundaryLimit)?.plot();
 
+        labels.push((format!("{}.png", team.name), label::render(&team)?));
         fields.push(Field {
+            name: team.name,
             color: team.color,
             line,
-            label: label::render(&team)?,
             label_box: LatLonBox::new(field, *LABEL_HEIGHT, *LABEL_WIDTH),
             label_heading: survey.line.heading(),
             label_region_box: LatLonBox::new(field, *LABEL_DIAGONAL, *LABEL_DIAGONAL),
-            name: team.name,
         });
     }
 
@@ -70,18 +71,16 @@ fn main() -> anyhow::Result<()> {
     fs::create_dir_all(&files_dir)?;
 
     let mut zip = ZipWriter::new(File::create(site_dir.join("20020.kmz"))?);
-
-    for field in &fields {
-        let filename = format!("{}.png", field.name);
-        fs::write(files_dir.join(&filename), &field.label)?;
-        zip.start_file(&format!("files/{}", filename), Default::default())?;
-        io::copy(&mut Cursor::new(&field.label), &mut zip)?;
-    }
-
     let kml = Output { fields }.render()?;
     fs::write(site_dir.join("20020.kml"), &kml)?;
     zip.start_file("doc.kml", Default::default())?;
     io::copy(&mut Cursor::new(kml.as_bytes()), &mut zip)?;
+
+    for (filename, label) in labels {
+        fs::write(files_dir.join(&filename), &label)?;
+        zip.start_file(&format!("files/{}", filename), Default::default())?;
+        io::copy(&mut Cursor::new(&label), &mut zip)?;
+    }
 
     zip.finish()?;
 
