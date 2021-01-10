@@ -2,19 +2,30 @@
 
 mod boundary;
 mod geometry;
+mod label;
 mod output;
 mod survey;
 
 use crate::boundary::Boundary;
-use crate::output::{Adapter, Field, Output};
+use crate::geometry::{Cartographic, LatLonBox};
+use crate::output::{Field, Output};
 use askama::Template;
 use hex::FromHex;
 use std::fmt;
 use std::fs::{self, File};
-use std::io::{self, ErrorKind};
+use std::io::{self, Cursor, ErrorKind};
 use std::path::Path;
 use std::str::FromStr;
+use uom::si::f64::Length;
+use uom::si::length::foot;
 use zip::ZipWriter;
+
+lazy_static::lazy_static! {
+    static ref LABEL_HEIGHT: Length = Length::new::<foot>(180_000.0);
+    static ref LABEL_WIDTH: Length = Length::new::<foot>(80_000.0);
+    static ref LABEL_DIAGONAL: Length = ((*LABEL_HEIGHT).powi(uom::typenum::P2::new())
+                                         + (*LABEL_HEIGHT).powi(uom::typenum::P2::new())).sqrt();
+}
 
 fn main() -> anyhow::Result<()> {
     let boundary = Boundary::load(&fs::read_to_string(
@@ -34,30 +45,44 @@ fn main() -> anyhow::Result<()> {
             Err(e) if e.kind() == ErrorKind::NotFound => continue,
             Err(e) => return Err(e.into()),
         })?;
+
         let survey = if coordinates.len() == 10 {
             survey::hash_mark_survey(&coordinates)
         } else {
             survey::linear_regression_survey(&coordinates)
         };
-        let segment = boundary.limit(&survey).ok_or(Error::BoundaryLimit)?;
+        let field = Cartographic::from(survey.field);
+        let line = boundary.limit(&survey).ok_or(Error::BoundaryLimit)?.plot();
+
         fields.push(Field {
-            name: team.name,
             color: team.color,
-            line: segment.tessellate(),
+            line,
+            label: label::render(&team)?,
+            label_box: LatLonBox::new(field, *LABEL_HEIGHT, *LABEL_WIDTH),
+            label_heading: survey.line.heading(),
+            label_region_box: LatLonBox::new(field, *LABEL_DIAGONAL, *LABEL_DIAGONAL),
+            name: team.name,
         });
     }
 
-    fs::create_dir_all(root().join("site"))?;
-    Output { fields }.render_into(&mut Adapter(File::create(
-        root().join("site").join("20020.kml"),
-    )?))?;
+    let site_dir = root().join("site");
+    let files_dir = site_dir.join("files");
+    fs::create_dir_all(&files_dir)?;
 
-    let mut zip = ZipWriter::new(File::create(root().join("site").join("20020.kmz"))?);
+    let mut zip = ZipWriter::new(File::create(site_dir.join("20020.kmz"))?);
+
+    for field in &fields {
+        let filename = format!("{}.png", field.name);
+        fs::write(files_dir.join(&filename), &field.label)?;
+        zip.start_file(&format!("files/{}", filename), Default::default())?;
+        io::copy(&mut Cursor::new(&field.label), &mut zip)?;
+    }
+
+    let kml = Output { fields }.render()?;
+    fs::write(site_dir.join("20020.kml"), &kml)?;
     zip.start_file("doc.kml", Default::default())?;
-    io::copy(
-        &mut File::open(root().join("site").join("20020.kml"))?,
-        &mut zip,
-    )?;
+    io::copy(&mut Cursor::new(kml.as_bytes()), &mut zip)?;
+
     zip.finish()?;
 
     Ok(())

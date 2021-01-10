@@ -1,7 +1,6 @@
-use crate::geometry::Cartographic;
+use crate::geometry::{Cartographic, LatLonBox};
 use askama::Template;
-use std::fmt;
-use std::io;
+use uom::si::f64::Angle;
 
 #[derive(Debug, Template)]
 #[template(path = "20020.kml", escape = "xml")]
@@ -14,34 +13,30 @@ pub(crate) struct Field {
     pub(crate) name: String,
     pub(crate) color: [u8; 3],
     pub(crate) line: Vec<Cartographic>,
+    pub(crate) label: Vec<u8>,
+    pub(crate) label_box: LatLonBox,
+    pub(crate) label_heading: Angle,
+    pub(crate) label_region_box: LatLonBox,
 }
 
 mod filters {
     use crate::geometry::Cartographic;
     use uom::si::angle::degree;
+    use uom::si::f64::Angle;
 
-    pub(crate) fn kml_color(color: &[u8; 3]) -> askama::Result<String> {
+    pub(super) fn degrees(value: &Angle) -> askama::Result<String> {
+        Ok(format!("{}", value.get::<degree>()))
+    }
+
+    pub(super) fn kml_color(color: &[u8; 3]) -> askama::Result<String> {
         Ok(hex::encode([0xff, color[2], color[1], color[0]]))
     }
 
-    pub(crate) fn kml_coord(coord: &Cartographic) -> askama::Result<String> {
+    pub(super) fn kml_coord(coord: &Cartographic) -> askama::Result<String> {
         Ok(format!(
             "{},{}",
             coord.longitude.get::<degree>(),
             coord.latitude.get::<degree>(),
         ))
-    }
-}
-
-// =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
-
-pub(crate) struct Adapter<T: io::Write>(pub(crate) T);
-
-impl<T: io::Write> fmt::Write for Adapter<T> {
-    fn write_str(&mut self, s: &str) -> fmt::Result {
-        match self.0.write_all(s.as_bytes()) {
-            Ok(_) => Ok(()),
-            Err(_) => Err(fmt::Error),
-        }
     }
 }

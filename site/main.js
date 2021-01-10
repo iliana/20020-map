@@ -19,10 +19,6 @@ const viewer = new Cesium.Viewer('map', {
   timeline: false,
 });
 
-// Disables camera-terrain collision detection for improved performance
-// https://community.cesium.com/t/why-arcgis-tile-terrain-make-my-globe-is-super-slow/8899/7
-viewer.scene.screenSpaceCameraController.enableCollisionDetection = false;
-
 viewer.dataSources.add(Cesium.KmlDataSource.load('20020.kml', {
   camera: viewer.camera,
   canvas: viewer.canvas,

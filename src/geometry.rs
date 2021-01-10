@@ -1,12 +1,61 @@
 use derive_more::{Add, Div, Sub, Sum};
-use uom::si::angle::radian;
-use uom::si::f64::Angle;
+use geographiclib_rs::{DirectGeodesic, Geodesic};
+use std::f64::consts::FRAC_PI_2;
+use uom::si::angle::{degree, radian};
+use uom::si::f64::{Angle, Length};
+use uom::si::length::meter;
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct Cartographic {
     pub(crate) longitude: Angle,
     pub(crate) latitude: Angle,
 }
+
+impl Cartographic {
+    fn geodesic(&self, heading: Angle, distance: Length) -> Cartographic {
+        let (lat, lon) = Geodesic::wgs84().direct(
+            self.latitude.get::<degree>(),
+            self.longitude.get::<degree>(),
+            heading.get::<degree>(),
+            distance.get::<meter>(),
+        );
+        Cartographic {
+            longitude: Angle::new::<degree>(lon),
+            latitude: Angle::new::<degree>(lat),
+        }
+    }
+}
+
+// =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
+
+#[derive(Debug, Clone, Copy)]
+pub(crate) struct LatLonBox {
+    pub(crate) north: Angle,
+    pub(crate) south: Angle,
+    pub(crate) east: Angle,
+    pub(crate) west: Angle,
+}
+
+impl LatLonBox {
+    pub(crate) fn new(center: Cartographic, height: Length, width: Length) -> LatLonBox {
+        LatLonBox {
+            north: center
+                .geodesic(Angle::new::<radian>(0.0), height / 2.0)
+                .latitude,
+            south: center
+                .geodesic(Angle::new::<radian>(0.0), -height / 2.0)
+                .latitude,
+            east: center
+                .geodesic(Angle::new::<radian>(FRAC_PI_2), width / 2.0)
+                .longitude,
+            west: center
+                .geodesic(Angle::new::<radian>(FRAC_PI_2), -width / 2.0)
+                .longitude,
+        }
+    }
+}
+
+// =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
 
 #[derive(Debug, Clone, Copy, Add, Div, Sub, Sum)]
 pub(crate) struct Mercator {
@@ -44,6 +93,8 @@ impl From<Mercator> for Cartographic {
     }
 }
 
+// =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
+
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct MercatorSegment {
     pub(crate) a: Mercator,
@@ -64,7 +115,7 @@ impl MercatorSegment {
         }
     }
 
-    pub(crate) fn tessellate(self) -> Vec<Cartographic> {
+    pub(crate) fn plot(self) -> Vec<Cartographic> {
         let line = self.as_line();
         let mut l = Vec::new();
         let d_x = 0.0005 / (line.slope.powi(2) + 1.0).sqrt();
@@ -91,6 +142,8 @@ impl MercatorSegment {
     }
 }
 
+// =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
+
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct MercatorLine {
     slope: f64,
@@ -107,6 +160,10 @@ impl MercatorLine {
             slope,
             y_intercept: point.y - slope * point.x,
         }
+    }
+
+    pub(crate) fn heading(self) -> Angle {
+        Angle::new::<radian>(self.slope.atan() + FRAC_PI_2)
     }
 
     pub(crate) fn intersection(self, other: MercatorLine) -> Option<Mercator> {

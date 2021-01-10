@@ -10,11 +10,17 @@ publish = false
 
 [dependencies]
 anyhow = "1"
-askama = "0.10"
+askama = { version = "0.10", default-features = false }
+contrast = "0.1"
 derive_more = "0.99"
+geographiclib-rs = "0.2"
 hex = "0.4"
 itertools = "0.10"
 lazy_static = "1"
+oxipng = { version = "4", default-features = false, features = ["parallel"] }
 regex = "1"
+resvg = "0.13"
+tiny-skia = "0.3"
 uom = "0.30"
+usvg = "0.13"
 zip = "0.5"

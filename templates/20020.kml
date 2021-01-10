@@ -15,6 +15,40 @@
             </p>
         ]]></description>
         <Folder>
+            <name>Labels</name>
+            {% for field in fields %}
+            <GroundOverlay>
+                <name>{{ field.name }}</name>
+                <Icon>
+                    <href>files/{{ field.name }}.png</href>
+                </Icon>
+                <altitude>3500</altitude>
+                <altitudeMode>absolute</altitudeMode>
+                <LatLonBox>
+                    <north>{{ field.label_box.north|degrees }}</north>
+                    <south>{{ field.label_box.south|degrees }}</south>
+                    <east>{{ field.label_box.east|degrees }}</east>
+                    <west>{{ field.label_box.west|degrees }}</west>
+                    <rotation>{{ field.label_heading|degrees }}</rotation>
+                </LatLonBox>
+                <Region>
+                    <LatLonAltBox>
+                        <north>{{ field.label_region_box.north|degrees }}</north>
+                        <south>{{ field.label_region_box.south|degrees }}</south>
+                        <east>{{ field.label_region_box.east|degrees }}</east>
+                        <west>{{ field.label_region_box.west|degrees }}</west>
+                    </LatLonAltBox>
+                    <Lod>
+                        <minLodPixels>0</minLodPixels>
+                        <maxLodPixels>1536</maxLodPixels>
+                        <minFadeExtent>0</minFadeExtent>
+                        <maxFadeExtent>512</maxFadeExtent>
+                    </Lod>
+                </Region>
+            </GroundOverlay>
+            {% endfor %}
+        </Folder>
+        <Folder>
             <name>Lines</name>
             {% for field in fields %}
             <Placemark>
