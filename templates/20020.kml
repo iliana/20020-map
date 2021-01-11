@@ -93,7 +93,7 @@
                         <color>{{ field.color|kml_color(0.7) }}</color>
                     </PolyStyle>
                     <LineStyle>
-                        <width>0</width>
+                        <color>00000000</color>
                     </LineStyle>
                 </Style>
             </Placemark>
