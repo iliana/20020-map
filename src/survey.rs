@@ -1,4 +1,5 @@
 use crate::geometry::{Cartographic, Mercator, MercatorLine, MercatorSegment};
+use crate::ord::OrdF64;
 use derive_more::{Add, Sum};
 use itertools::Itertools;
 use lazy_static::lazy_static;
@@ -134,9 +135,9 @@ pub(crate) fn hash_mark(kml: &str) -> Survey {
         let mut lines: Vec<_> = input
             .into_iter()
             .tuple_combinations()
-            .map(|(a, b)| (a.distance(b), a.slope(b)))
+            .map(|(a, b)| (OrdF64(a.distance(b)), a.slope(b)))
             .collect();
-        lines.sort_unstable_by(|(a, _), (b, _)| a.partial_cmp(b).unwrap());
+        lines.sort_by_key(|(d, _)| *d);
 
         let mut parallel = lines.split_off(5);
         parallel.truncate(8);

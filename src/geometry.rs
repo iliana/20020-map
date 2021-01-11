@@ -1,6 +1,7 @@
+use crate::ord::OrdF64;
+use crate::survey::Survey;
 use derive_more::{Add, Div, Sub, Sum};
-use geo::prelude::*;
-use geo::Point;
+use itertools::Itertools;
 use std::f64::consts::FRAC_PI_2;
 use uom::si::angle::{degree, radian};
 use uom::si::f64::{Angle, Length};
@@ -13,32 +14,25 @@ pub(crate) struct Cartographic {
 }
 
 impl Cartographic {
+    // port of https://github.com/georust/geo/blob/geo-0.16.0/geo/src/algorithm/haversine_destination.rs#L33-L48
+    // to reduce deps + radians-to-degrees conversions
     pub(crate) fn destination(self, heading: Angle, distance: Length) -> Cartographic {
-        Point::from(self)
-            .haversine_destination(heading.get::<degree>(), distance.get::<meter>())
-            .into()
-    }
-}
-
-impl From<Cartographic> for Point<f64> {
-    fn from(point: Cartographic) -> Point<f64> {
-        Point::new(
-            point.longitude.get::<degree>(),
-            point.latitude.get::<degree>(),
-        )
-    }
-}
-
-impl From<Point<f64>> for Cartographic {
-    fn from(point: Point<f64>) -> Cartographic {
+        let radius = Angle::from(distance / Length::new::<meter>(6_371_008.8));
+        let latitude = (self.latitude.sin() * radius.cos()
+            + self.latitude.cos() * radius.sin() * heading.cos())
+        .asin();
         Cartographic {
-            longitude: Angle::new::<degree>(point.x()),
-            latitude: Angle::new::<degree>(point.y()),
+            longitude: { heading.sin() * radius.sin() * self.latitude.cos() }
+                .atan2(radius.cos() - self.latitude.sin() * latitude.sin())
+                + self.longitude,
+            latitude,
         }
     }
 }
 
 // =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
+
+pub(crate) type LatLonQuad = [Cartographic; 4];
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct LatLonBox {
@@ -197,5 +191,53 @@ impl MercatorLine {
             x,
             y: self.slope * x + self.y_intercept,
         })
+    }
+}
+
+// =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
+
+#[derive(Debug)]
+pub(crate) struct Boundary(Vec<MercatorSegment>);
+
+impl Boundary {
+    pub(crate) fn load(input: &str) -> Boundary {
+        Boundary(
+            input
+                .lines()
+                .filter(|line| !line.starts_with('#'))
+                .map(|line| {
+                    let (longitude, latitude) = line
+                        .splitn(3, ',')
+                        .take(2)
+                        .map(|s| Angle::new::<degree>(s.parse().unwrap()))
+                        .collect_tuple()
+                        .expect("insufficient data in boundary data line");
+                    Cartographic {
+                        longitude,
+                        latitude,
+                    }
+                    .into()
+                })
+                .tuple_windows()
+                .map(|(a, b)| MercatorSegment { a, b })
+                .collect(),
+        )
+    }
+
+    pub(crate) fn limit(&self, survey: &Survey) -> Option<MercatorSegment> {
+        let (west, east) = self
+            .0
+            .iter()
+            .filter_map(|segment| {
+                segment
+                    .intersection(survey.line)
+                    .map(|i| (i, OrdF64(survey.field.distance(i))))
+            })
+            .partition::<Vec<_>, _>(|(intersection, _)| intersection.x < survey.field.x);
+        let (a, b) = vec![west, east]
+            .into_iter()
+            .filter_map(|v| v.into_iter().min_by_key(|(_, d)| *d).map(|(i, _)| i))
+            .collect_tuple()?;
+        Some(MercatorSegment { a, b })
     }
 }

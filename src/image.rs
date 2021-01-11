@@ -1,13 +1,29 @@
+use crate::template::Label;
 use crate::Team;
 use anyhow::Result;
 use askama::Template;
 use contrast::contrast;
-use tiny_skia::Pixmap;
+use tiny_skia::{Color, Pixmap};
 
 const BLACK: [u8; 3] = [0, 0, 0];
 const WHITE: [u8; 3] = [255, 255, 255];
 
-pub(crate) fn render(team: &Team) -> Result<Vec<u8>> {
+fn encode(pixmap: &Pixmap) -> Result<Vec<u8>> {
+    Ok(oxipng::optimize_from_memory(
+        &pixmap.encode_png()?,
+        &Default::default(),
+    )?)
+}
+
+pub(crate) fn field(team: &Team) -> Result<Vec<u8>> {
+    let mut color = Color::from_rgba8(team.color[0], team.color[1], team.color[2], u8::MAX);
+    color.set_alpha(0.7);
+    let mut pixmap = Pixmap::new(1, 20).unwrap();
+    pixmap.fill(color);
+    encode(&pixmap)
+}
+
+pub(crate) fn label(team: &Team) -> Result<Vec<u8>> {
     let black: f64 = contrast(team.color.into(), BLACK.into());
     let white: f64 = contrast(team.color.into(), WHITE.into());
     let svg = Label {
@@ -30,21 +46,5 @@ pub(crate) fn render(team: &Team) -> Result<Vec<u8>> {
     let tree = usvg::Tree::from_str(&svg, &OPTIONS)?;
     let mut pixmap = Pixmap::new(160, 360).unwrap();
     resvg::render(&tree, usvg::FitTo::Original, pixmap.as_mut());
-    Ok(oxipng::optimize_from_memory(
-        &pixmap.encode_png()?,
-        &Default::default(),
-    )?)
-}
-
-#[derive(Debug, Template)]
-#[template(path = "label.svg", escape = "xml")]
-struct Label<'a> {
-    team: &'a Team,
-    contrast_color: [u8; 3],
-}
-
-mod filters {
-    pub(crate) fn css_color(color: &[u8; 3]) -> askama::Result<String> {
-        Ok(format!("#{}", hex::encode(color)))
-    }
+    encode(&pixmap)
 }

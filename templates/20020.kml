@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
     <Document>
         <name>20020 Bowl Game Map</name>
         <description><![CDATA[
@@ -14,6 +14,7 @@
                 Data: Google, Landsat/Copernicus, LDEO-Columbia, NSF, NOAA, SIO, U.S. Navy, NGA, GEBCO
             </p>
         ]]></description>
+        {% if kmz %}
         <Folder>
             <name>Labels</name>
             {% for field in fields %}
@@ -48,6 +49,7 @@
             </GroundOverlay>
             {% endfor %}
         </Folder>
+        {% endif %}
         <Folder>
             <name>Lines</name>
             {% for field in fields %}
@@ -74,6 +76,36 @@
         <Folder>
             <name>Fields</name>
             {% for field in fields %}
+            {% if kmz %}
+            <Folder>
+                <name>{{ field.name }}</name>
+                {% for quad in field.field_quads %}
+                <GroundOverlay>
+                    <Icon>
+                        <href>files/{{ field.color|css_color }}.png</href>
+                    </Icon>
+                    <gx:LatLonQuad>
+                        <coordinates>
+                            {% for coordinate in quad -%}
+                            {{ coordinate|kml_coord }}
+                            {% endfor %}
+                        </coordinates>
+                    </gx:LatLonQuad>
+                    <Region>
+                        <LatLonAltBox>
+                            <north>{{ quad|limit_north }}</north>
+                            <south>{{ quad|limit_south }}</south>
+                            <east>{{ quad|limit_east }}</east>
+                            <west>{{ quad|limit_west }}</west>
+                        </LatLonAltBox>
+                        <Lod>
+                            <minLodPixels>10</minLodPixels>
+                        </Lod>
+                    </Region>
+                </GroundOverlay>
+                {% endfor %}
+            </Folder>
+            {% else %}
             <Placemark>
                 <name>{{ field.name }}</name>
                 <Polygon>
@@ -97,6 +129,7 @@
                     </LineStyle>
                 </Style>
             </Placemark>
+            {% endif %}
             {% endfor %}
         </Folder>
     </Document>

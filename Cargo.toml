@@ -10,17 +10,39 @@ publish = false
 
 [dependencies]
 anyhow = "1"
-askama = { version = "0.10", default-features = false }
 contrast = "0.1"
 derive_more = "0.99"
-geo = "0.16"
 hex = "0.4"
 itertools = "0.10"
 lazy_static = "1"
-oxipng = { version = "4", default-features = false, features = ["parallel"] }
+paste = "1"
 regex = "1"
-resvg = "0.13"
 tiny-skia = "0.3"
-uom = "0.31"
-usvg = "0.13"
-zip = "0.5"
+
+[dependencies.askama]
+version = "0.10"
+default-features = false
+
+[dependencies.oxipng]
+version = "4"
+default-features = false
+features = ["parallel"]
+
+[dependencies.resvg]
+version = "0.13"
+default-features = false
+
+[dependencies.uom]
+version = "0.31"
+default-features = false
+features = ["f64", "si", "std"]
+
+[dependencies.usvg]
+version = "0.13"
+default-features = false
+features = ["text"]
+
+[dependencies.zip]
+version = "0.5"
+default-features = false
+features = ["deflate", "time"]
