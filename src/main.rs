@@ -43,19 +43,18 @@ fn main() -> anyhow::Result<()> {
         .skip(1)
     {
         let team = Team::from_str(line)?;
-        let coordinates = survey::parse_coordinates(&match fs::read_to_string(
+        let kml = match fs::read_to_string(
             root().join("survey").join(&team.name).with_extension("kml"),
         ) {
             Ok(x) => x,
             Err(e) if e.kind() == ErrorKind::NotFound => continue,
             Err(e) => return Err(e.into()),
-        })?;
-
-        let survey = if coordinates.len() == 10 {
-            survey::hash_mark_survey(&coordinates)
-        } else {
-            survey::linear_regression_survey(&coordinates)
         };
+        let survey = match team.name.as_str() {
+            "Purdue" => survey::sidelines_and_50(&kml),
+            _ => survey::hash_mark(&kml),
+        };
+
         let center = Cartographic::from(survey.field);
         let heading = survey.line.heading();
         let cross = heading - *QUARTER_TURN;

@@ -102,7 +102,7 @@ pub(crate) struct MercatorSegment {
 }
 
 impl MercatorSegment {
-    fn as_line(self) -> MercatorLine {
+    pub(crate) fn as_line(self) -> MercatorLine {
         MercatorLine::new(self.a, self.b)
     }
 
