@@ -1,5 +1,6 @@
 use derive_more::{Add, Div, Sub, Sum};
-use geographiclib_rs::{DirectGeodesic, Geodesic};
+use geo::prelude::*;
+use geo::Point;
 use std::f64::consts::FRAC_PI_2;
 use uom::si::angle::{degree, radian};
 use uom::si::f64::{Angle, Length};
@@ -12,16 +13,27 @@ pub(crate) struct Cartographic {
 }
 
 impl Cartographic {
-    pub(crate) fn destination(&self, heading: Angle, distance: Length) -> Cartographic {
-        let (lat, lon) = Geodesic::wgs84().direct(
-            self.latitude.get::<degree>(),
-            self.longitude.get::<degree>(),
-            heading.get::<degree>(),
-            distance.get::<meter>(),
-        );
+    pub(crate) fn destination(self, heading: Angle, distance: Length) -> Cartographic {
+        Point::from(self)
+            .haversine_destination(heading.get::<degree>(), distance.get::<meter>())
+            .into()
+    }
+}
+
+impl From<Cartographic> for Point<f64> {
+    fn from(point: Cartographic) -> Point<f64> {
+        Point::new(
+            point.longitude.get::<degree>(),
+            point.latitude.get::<degree>(),
+        )
+    }
+}
+
+impl From<Point<f64>> for Cartographic {
+    fn from(point: Point<f64>) -> Cartographic {
         Cartographic {
-            longitude: Angle::new::<degree>(lon),
-            latitude: Angle::new::<degree>(lat),
+            longitude: Angle::new::<degree>(point.x()),
+            latitude: Angle::new::<degree>(point.y()),
         }
     }
 }

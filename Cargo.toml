@@ -13,7 +13,7 @@ anyhow = "1"
 askama = { version = "0.10", default-features = false }
 contrast = "0.1"
 derive_more = "0.99"
-geographiclib-rs = "0.2"
+geo = "0.16"
 hex = "0.4"
 itertools = "0.10"
 lazy_static = "1"
