@@ -53,7 +53,7 @@ fn main() -> Result<()> {
             Err(e) => return Err(e.into()),
         };
         let survey = match team.name.as_str() {
-            "Purdue" => survey::sidelines_and_50(&kml),
+            "Purdue" | "UAB" => survey::sidelines_and_50(&kml),
             _ => survey::hash_mark(&kml),
         };
 

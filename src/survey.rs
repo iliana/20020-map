@@ -105,12 +105,22 @@ pub(crate) fn sidelines_and_50(kml: &str) -> Survey {
             .unwrap(),
     )
     .midpoint();
-    let slope = linear_regression(
+
+    let mut marks = placemarks(kml).peekable();
+    let slope = if marks.peek().is_some() {
+        linear_regression(
+            sidelines
+                .into_iter()
+                .flat_map(|line| vec![line.a, line.b])
+                .chain(marks),
+        )
+    } else {
         sidelines
             .into_iter()
-            .flat_map(|segment| vec![segment.a, segment.b])
-            .chain(placemarks(kml)),
-    );
+            .map(|line| line.as_line().slope)
+            .sum::<f64>()
+            / 2.0
+    };
 
     Survey {
         field,

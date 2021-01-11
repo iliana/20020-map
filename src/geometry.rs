@@ -162,7 +162,7 @@ impl From<(Mercator, Mercator)> for MercatorSegment {
 
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct MercatorLine {
-    slope: f64,
+    pub(crate) slope: f64,
     y_intercept: f64,
 }
 
