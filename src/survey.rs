@@ -94,14 +94,16 @@ pub(crate) fn sidelines_and_50(kml: &str) -> Survey {
     let mut iter = lines(kml);
     let fifty = iter.next().unwrap().as_line();
     let sidelines = iter.take(2).collect::<Vec<_>>();
-    let endpoints = sidelines
-        .iter()
-        .copied()
-        .filter_map(|l| fifty.intersection(l.as_line()))
-        .collect_tuple::<(_, _)>()
-        .unwrap();
 
-    let field = (endpoints.0 + endpoints.1) / 2.0;
+    let field = MercatorSegment::from(
+        sidelines
+            .iter()
+            .copied()
+            .filter_map(|l| fifty.intersection(l.as_line()))
+            .collect_tuple::<(_, _)>()
+            .unwrap(),
+    )
+    .midpoint();
     let slope = linear_regression(
         sidelines
             .into_iter()

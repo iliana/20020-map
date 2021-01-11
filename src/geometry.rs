@@ -127,6 +127,10 @@ impl MercatorSegment {
         }
     }
 
+    pub(crate) fn midpoint(self) -> Mercator {
+        (self.a + self.b) / 2.0
+    }
+
     pub(crate) fn plot(self) -> Vec<Cartographic> {
         let line = self.as_line();
         let mut l = Vec::new();
@@ -151,6 +155,12 @@ impl MercatorSegment {
             .into(),
         );
         l
+    }
+}
+
+impl From<(Mercator, Mercator)> for MercatorSegment {
+    fn from(x: (Mercator, Mercator)) -> MercatorSegment {
+        MercatorSegment { a: x.0, b: x.1 }
     }
 }
 
