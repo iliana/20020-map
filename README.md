@@ -10,7 +10,7 @@ Progress:
 - [x] List of all teams and colors
 - [ ] [Survey](survey/) all 111 fields
 - [x] Draw field guide lines in KML
-- [ ] Draw fields in KML
+- [x] Draw fields in KML
 - [x] Draw field markers (e.g. "LOU" where the 0 yard line is) in KML
 
 Stretch goals:
