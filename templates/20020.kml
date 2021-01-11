@@ -40,9 +40,9 @@
                     </LatLonAltBox>
                     <Lod>
                         <minLodPixels>0</minLodPixels>
-                        <maxLodPixels>1536</maxLodPixels>
+                        <maxLodPixels>800</maxLodPixels>
                         <minFadeExtent>0</minFadeExtent>
-                        <maxFadeExtent>512</maxFadeExtent>
+                        <maxFadeExtent>400</maxFadeExtent>
                     </Lod>
                 </Region>
             </GroundOverlay>
