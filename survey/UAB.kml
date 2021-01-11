@@ -8,6 +8,19 @@
 			<width>2</width>
 		</LineStyle>
 	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<Style id="inline0">
 		<LineStyle>
 			<color>ff0000ff</color>
@@ -30,12 +43,35 @@
 			<styleUrl>#inline5</styleUrl>
 		</Pair>
 	</StyleMap>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<Style id="inline3">
 		<LineStyle>
 			<color>ff0000ff</color>
 			<width>2</width>
 		</LineStyle>
 	</Style>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
 	<StyleMap id="inline4">
 		<Pair>
 			<key>normal</key>
@@ -100,6 +136,91 @@
 					-86.84290454040139,33.51130406826444,173.1121118431563 -86.84289894142455,33.51107672181775,173.0734149241194 
 				</coordinates>
 			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-86.84684476466583</longitude>
+				<latitude>33.7453261536688</latitude>
+				<altitude>0</altitude>
+				<heading>-0.1915559725164135</heading>
+				<tilt>0</tilt>
+				<range>1029.709062243095</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-86.8491059041047,33.74728686660411,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-86.84684476466583</longitude>
+				<latitude>33.7453261536688</latitude>
+				<altitude>0</altitude>
+				<heading>-0.1915559725164135</heading>
+				<tilt>0</tilt>
+				<range>1029.709062243095</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-86.84895028272493,33.74442957805816,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-86.86239163934535</longitude>
+				<latitude>34.23399404791243</latitude>
+				<altitude>16.56399982137313</altitude>
+				<heading>-1.525387816938016</heading>
+				<tilt>80.06628364482971</tilt>
+				<range>377.3264427065135</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-86.86232436536642,34.23346642780591,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-87.15646817053913</longitude>
+				<latitude>45.07253818010687</latitude>
+				<altitude>0</altitude>
+				<heading>0.02397951057740727</heading>
+				<tilt>0</tilt>
+				<range>586.0026601590232</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-87.15744867250721,45.07285480792017,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-87.1570085004618</longitude>
+				<latitude>45.0715882153591</latitude>
+				<altitude>0</altitude>
+				<heading>1.647306833427772</heading>
+				<tilt>75.43504080445368</tilt>
+				<range>913.1506056674359</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-87.15764767077519,45.06919627253964,0</coordinates>
+			</Point>
 		</Placemark>
 	</Folder>
 </Document>
