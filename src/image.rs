@@ -5,9 +5,6 @@ use askama::Template;
 use contrast::contrast;
 use tiny_skia::{Color, Pixmap};
 
-const BLACK: [u8; 3] = [0, 0, 0];
-const WHITE: [u8; 3] = [255, 255, 255];
-
 fn encode(pixmap: &Pixmap) -> Result<Vec<u8>> {
     Ok(oxipng::optimize_from_memory(
         &pixmap.encode_png()?,
@@ -24,11 +21,11 @@ pub(crate) fn field(team: &Team) -> Result<Vec<u8>> {
 }
 
 pub(crate) fn label(team: &Team) -> Result<Vec<u8>> {
-    let black: f64 = contrast(team.color.into(), BLACK.into());
-    let white: f64 = contrast(team.color.into(), WHITE.into());
+    let black: f64 = contrast(team.color.into(), [0, 0, 0].into());
+    let white: f64 = contrast(team.color.into(), [255, 255, 255].into());
     let svg = Label {
         team,
-        contrast_color: if white > black { WHITE } else { BLACK },
+        contrast_color: if white > black { "ffffff" } else { "000000" },
     }
     .render()?;
 

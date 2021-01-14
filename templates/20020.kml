@@ -19,25 +19,25 @@
             <name>Labels</name>
             {% for field in fields %}
             <GroundOverlay>
-                <name>{{ field.name }}</name>
+                <name>{{ field.team.name }}</name>
                 <Icon>
-                    <href>files/{{ field.name }}.png</href>
+                    <href>files/{{ field.team.name }}.png</href>
                 </Icon>
                 <altitude>3500</altitude>
                 <altitudeMode>absolute</altitudeMode>
                 <LatLonBox>
-                    <north>{{ field.label_box.north|degrees }}</north>
-                    <south>{{ field.label_box.south|degrees }}</south>
-                    <east>{{ field.label_box.east|degrees }}</east>
-                    <west>{{ field.label_box.west|degrees }}</west>
-                    <rotation>{{ field.label_heading|degrees }}</rotation>
+                    <north>{{ field.label.north }}</north>
+                    <south>{{ field.label.south }}</south>
+                    <east>{{ field.label.east }}</east>
+                    <west>{{ field.label.west }}</west>
+                    <rotation>{{ 180.0 - field.label_bearing }}</rotation>
                 </LatLonBox>
                 <Region>
                     <LatLonAltBox>
-                        <north>{{ field.label_region_box.north|degrees }}</north>
-                        <south>{{ field.label_region_box.south|degrees }}</south>
-                        <east>{{ field.label_region_box.east|degrees }}</east>
-                        <west>{{ field.label_region_box.west|degrees }}</west>
+                        <north>{{ field.label_region.north }}</north>
+                        <south>{{ field.label_region.south }}</south>
+                        <east>{{ field.label_region.east }}</east>
+                        <west>{{ field.label_region.west }}</west>
                     </LatLonAltBox>
                     <Lod>
                         <minLodPixels>0</minLodPixels>
@@ -54,83 +54,44 @@
             <name>Lines</name>
             {% for field in fields %}
             <Placemark>
-                <name>{{ field.name }}</name>
+                <name>{{ field.team.name }}</name>
                 <LineString>
                     <altitudeMode>clampToGround</altitudeMode>
                     <tessellate>1</tessellate>
                     <coordinates>
-                        {% for coordinate in field.line -%}
-                        {{ coordinate|kml_coord }}
+                        {% for point in field.line %}
+                        {{ point.x }},{{ point.y }}
                         {% endfor %}
                     </coordinates>
                 </LineString>
                 <Style>
                     <LineStyle>
-                        <color>{{ field.color|kml_color(1.0) }}</color>
+                        <color>{{ field.team.color|kml_color }}</color>
                         <width>3</width>
                     </LineStyle>
                 </Style>
             </Placemark>
             {% endfor %}
         </Folder>
+        {% if kmz %}
         <Folder>
             <name>Fields</name>
             {% for field in fields %}
-            {% if kmz %}
-            <Folder>
-                <name>{{ field.name }}</name>
-                {% for quad in field.field_quads %}
-                <GroundOverlay>
-                    <Icon>
-                        <href>files/{{ field.color|css_color }}.png</href>
-                    </Icon>
-                    <gx:LatLonQuad>
-                        <coordinates>
-                            {% for coordinate in quad -%}
-                            {{ coordinate|kml_coord }}
-                            {% endfor %}
-                        </coordinates>
-                    </gx:LatLonQuad>
-                    <Region>
-                        <LatLonAltBox>
-                            <north>{{ quad|limit_north }}</north>
-                            <south>{{ quad|limit_south }}</south>
-                            <east>{{ quad|limit_east }}</east>
-                            <west>{{ quad|limit_west }}</west>
-                        </LatLonAltBox>
-                        <Lod>
-                            <minLodPixels>10</minLodPixels>
-                        </Lod>
-                    </Region>
-                </GroundOverlay>
-                {% endfor %}
-            </Folder>
-            {% else %}
-            <Placemark>
-                <name>{{ field.name }}</name>
-                <Polygon>
-                    <altitudeMode>clampToGround</altitudeMode>
-                    <outerBoundaryIs>
-                        <LinearRing>
-                            <coordinates>
-                                {% for coordinate in field.field -%}
-                                {{ coordinate|kml_coord }}
-                                {% endfor %}
-                            </coordinates>
-                        </LinearRing>
-                    </outerBoundaryIs>
-                </Polygon>
-                <Style>
-                    <PolyStyle>
-                        <color>{{ field.color|kml_color(0.7) }}</color>
-                    </PolyStyle>
-                    <LineStyle>
-                        <color>00000000</color>
-                    </LineStyle>
-                </Style>
-            </Placemark>
-            {% endif %}
+            <GroundOverlay>
+                <name>{{ field.team.name }}</name>
+                <Icon>
+                    <href>files/{{ field.team.color|css_color }}.png</href>
+                </Icon>
+                <LatLonBox>
+                    <north>{{ field.field.north }}</north>
+                    <south>{{ field.field.south }}</south>
+                    <east>{{ field.field.east }}</east>
+                    <west>{{ field.field.west }}</west>
+                    <rotation>{{ 180.0 - field.field_bearing }}</rotation>
+                </LatLonBox>
+            </GroundOverlay>
             {% endfor %}
         </Folder>
+        {% endif %}
     </Document>
 </kml>

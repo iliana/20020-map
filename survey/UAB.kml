@@ -2,54 +2,62 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>UAB.kml</name>
-	<Style id="inline">
-		<LineStyle>
-			<color>ff0000ff</color>
-			<width>2</width>
-		</LineStyle>
-	</Style>
-	<Style id="sh_ylw-pushpin">
+	<Style id="sn_open-diamond">
 		<IconStyle>
-			<scale>1.3</scale>
+			<scale>1.2</scale>
 			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
 			</Icon>
-			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
 		</IconStyle>
 		<BalloonStyle>
 		</BalloonStyle>
 		<ListStyle>
 		</ListStyle>
 	</Style>
-	<Style id="inline0">
+	<Style id="inline5">
 		<LineStyle>
 			<color>ff0000ff</color>
 			<width>2</width>
 		</LineStyle>
 	</Style>
-	<Style id="inline1">
-		<LineStyle>
-			<color>ff0000ff</color>
-			<width>2</width>
-		</LineStyle>
-	</Style>
-	<StyleMap id="inline2">
+	<StyleMap id="msn_open-diamond">
 		<Pair>
 			<key>normal</key>
-			<styleUrl>#inline7</styleUrl>
+			<styleUrl>#sn_open-diamond</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
-			<styleUrl>#inline5</styleUrl>
+			<styleUrl>#sh_open-diamond</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="sn_ylw-pushpin">
+	<StyleMap id="inline6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="inline4">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_open-diamond">
 		<IconStyle>
-			<scale>1.1</scale>
+			<scale>1.4</scale>
 			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
 			</Icon>
-			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
 		</IconStyle>
 		<BalloonStyle>
 		</BalloonStyle>
@@ -62,36 +70,20 @@
 			<width>2</width>
 		</LineStyle>
 	</Style>
-	<StyleMap id="msn_ylw-pushpin">
+	<StyleMap id="inline1">
 		<Pair>
 			<key>normal</key>
-			<styleUrl>#sn_ylw-pushpin</styleUrl>
+			<styleUrl>#inline7</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
-			<styleUrl>#sh_ylw-pushpin</styleUrl>
+			<styleUrl>#inline3</styleUrl>
 		</Pair>
 	</StyleMap>
-	<StyleMap id="inline4">
+	<StyleMap id="inline2">
 		<Pair>
 			<key>normal</key>
 			<styleUrl>#inline0</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#inline1</styleUrl>
-		</Pair>
-	</StyleMap>
-	<Style id="inline5">
-		<LineStyle>
-			<color>ff0000ff</color>
-			<width>2</width>
-		</LineStyle>
-	</Style>
-	<StyleMap id="inline6">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#inline3</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
@@ -104,12 +96,18 @@
 			<width>2</width>
 		</LineStyle>
 	</Style>
+	<Style id="inline0">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
 	<Folder>
 		<name>UAB</name>
 		<open>1</open>
 		<Placemark>
 			<name>Line Measure</name>
-			<styleUrl>#inline6</styleUrl>
+			<styleUrl>#inline2</styleUrl>
 			<LineString>
 				<tessellate>1</tessellate>
 				<coordinates>
@@ -119,7 +117,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Line Measure</name>
-			<styleUrl>#inline4</styleUrl>
+			<styleUrl>#inline6</styleUrl>
 			<LineString>
 				<tessellate>1</tessellate>
 				<coordinates>
@@ -129,7 +127,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Line Measure</name>
-			<styleUrl>#inline2</styleUrl>
+			<styleUrl>#inline1</styleUrl>
 			<LineString>
 				<tessellate>1</tessellate>
 				<coordinates>
@@ -138,88 +136,54 @@
 			</LineString>
 		</Placemark>
 		<Placemark>
-			<name>Untitled Placemark</name>
+			<name>ch9 00:01:19.079</name>
 			<LookAt>
-				<longitude>-86.84684476466583</longitude>
-				<latitude>33.7453261536688</latitude>
+				<longitude>-86.84857857836992</longitude>
+				<latitude>33.74401251892741</latitude>
 				<altitude>0</altitude>
-				<heading>-0.1915559725164135</heading>
+				<heading>14.00399878123525</heading>
+				<tilt>76.96126623273396</tilt>
+				<range>767.6007591257105</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_open-diamond</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-86.84900371882384,33.74469875164829,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch9 00:01:40.567</name>
+			<LookAt>
+				<longitude>-87.03931645827204</longitude>
+				<latitude>40.75784573977042</latitude>
+				<altitude>0</altitude>
+				<heading>1.205619716807475</heading>
 				<tilt>0</tilt>
-				<range>1029.709062243095</range>
+				<range>634.3003754935241</range>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</LookAt>
-			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<styleUrl>#msn_open-diamond</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-86.8491059041047,33.74728686660411,0</coordinates>
+				<coordinates>-87.03992496544821,40.75811417999701,0</coordinates>
 			</Point>
 		</Placemark>
 		<Placemark>
-			<name>Untitled Placemark</name>
+			<name>ch9 00:01:53.763</name>
 			<LookAt>
-				<longitude>-86.84684476466583</longitude>
-				<latitude>33.7453261536688</latitude>
+				<longitude>-87.15710801479575</longitude>
+				<latitude>45.07083023764729</latitude>
 				<altitude>0</altitude>
-				<heading>-0.1915559725164135</heading>
-				<tilt>0</tilt>
-				<range>1029.709062243095</range>
+				<heading>-0.9741789712598032</heading>
+				<tilt>72.69872138137703</tilt>
+				<range>674.309625539551</range>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</LookAt>
-			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<styleUrl>#msn_open-diamond</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-86.84895028272493,33.74442957805816,0</coordinates>
-			</Point>
-		</Placemark>
-		<Placemark>
-			<name>Untitled Placemark</name>
-			<LookAt>
-				<longitude>-86.86239163934535</longitude>
-				<latitude>34.23399404791243</latitude>
-				<altitude>16.56399982137313</altitude>
-				<heading>-1.525387816938016</heading>
-				<tilt>80.06628364482971</tilt>
-				<range>377.3264427065135</range>
-				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
-			</LookAt>
-			<styleUrl>#msn_ylw-pushpin</styleUrl>
-			<Point>
-				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-86.86232436536642,34.23346642780591,0</coordinates>
-			</Point>
-		</Placemark>
-		<Placemark>
-			<name>Untitled Placemark</name>
-			<LookAt>
-				<longitude>-87.15646817053913</longitude>
-				<latitude>45.07253818010687</latitude>
-				<altitude>0</altitude>
-				<heading>0.02397951057740727</heading>
-				<tilt>0</tilt>
-				<range>586.0026601590232</range>
-				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
-			</LookAt>
-			<styleUrl>#msn_ylw-pushpin</styleUrl>
-			<Point>
-				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-87.15744867250721,45.07285480792017,0</coordinates>
-			</Point>
-		</Placemark>
-		<Placemark>
-			<name>Untitled Placemark</name>
-			<LookAt>
-				<longitude>-87.1570085004618</longitude>
-				<latitude>45.0715882153591</latitude>
-				<altitude>0</altitude>
-				<heading>1.647306833427772</heading>
-				<tilt>75.43504080445368</tilt>
-				<range>913.1506056674359</range>
-				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
-			</LookAt>
-			<styleUrl>#msn_ylw-pushpin</styleUrl>
-			<Point>
-				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-87.15764767077519,45.06919627253964,0</coordinates>
+				<coordinates>-87.15736366925123,45.07307791814833,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>

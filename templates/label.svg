@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="160" height="360">
     <g transform="rotate(90) translate(0 -160)">
-        <path fill="#{{ contrast_color|css_color }}" d="M0 0h360v160H0z"/>
+        <path fill="#{{ contrast_color }}" d="M0 0h360v160H0z"/>
         <path fill="#{{ team.color|css_color }}" d="M5 5h350v150H5z"/>
-        <text x="180" y="110.333" font-family="Roboto" font-weight="700" font-size="85.333" text-anchor="middle" fill="#{{ contrast_color|css_color }}">
+        <text x="180" y="110.333" font-family="Roboto" font-weight="700" font-size="85.333" text-anchor="middle" fill="#{{ contrast_color }}">
             {{ team.abbr }}
         </text>
     </g>

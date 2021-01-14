@@ -2,7 +2,7 @@ use std::cmp::Ordering;
 use std::fmt;
 
 #[derive(Clone, Copy)]
-pub(crate) struct OrdF64(pub(crate) f64);
+pub struct OrdF64(pub f64);
 
 impl fmt::Debug for OrdF64 {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {

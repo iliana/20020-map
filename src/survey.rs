@@ -1,88 +1,40 @@
-use crate::geometry::{Cartographic, Mercator, MercatorLine, MercatorSegment};
+use crate::geo::*;
 use crate::ord::OrdF64;
 use derive_more::{Add, Sum};
 use itertools::Itertools;
 use lazy_static::lazy_static;
-use regex::{Captures, Regex};
-use std::str::FromStr;
-use uom::si::angle::degree;
-use uom::si::f64::Angle;
+use regex::Regex;
 
-#[derive(Debug)]
-pub(crate) struct Survey {
-    pub(crate) field: Mercator,
-    pub(crate) line: MercatorLine,
+#[derive(Debug, Clone, Copy)]
+pub struct Survey {
+    pub field: Coordinate,
+    pub bearing: f64,
 }
 
-const COORD_START: &str = r"<coordinates>";
-const COORD_END: &str = r"</coordinates>";
-const POINT: &str = r"([0-9\.-]+),([0-9\.-]+)(?:,[0-9\.-]+)";
-
-fn point(captures: &Captures<'_>, i: usize) -> Mercator {
-    Cartographic {
-        longitude: Angle::new::<degree>(f64::from_str(&captures[i]).unwrap()),
-        latitude: Angle::new::<degree>(f64::from_str(&captures[i + 1]).unwrap()),
+impl Survey {
+    pub fn from_slope(field: Coordinate, slope: f64) -> Survey {
+        Survey {
+            field,
+            bearing: field.bearing_from_slope(slope),
+        }
     }
-    .into()
+
+    pub fn as_line(self) -> Line {
+        Line {
+            start: self.field,
+            end: Point::from(self.field)
+                .haversine_destination(self.bearing, 50.0)
+                .into(),
+        }
+    }
 }
 
-fn placemarks(kml: &str) -> impl Iterator<Item = Mercator> + '_ {
-    lazy_static! {
-        static ref MARK_RE: Regex = Regex::new(&format!(
-            "{}{s}{}{s}{}",
-            COORD_START,
-            POINT,
-            COORD_END,
-            s = r"\s*"
-        ))
-        .unwrap();
+pub fn default(kml: &str) -> Survey {
+    if kml.contains("<LineString>") {
+        sidelines_and_50(kml)
+    } else {
+        hash_mark(kml)
     }
-
-    MARK_RE
-        .captures_iter(kml)
-        .map(|captures| point(&captures, 1))
-}
-
-fn lines(kml: &str) -> impl Iterator<Item = MercatorSegment> + '_ {
-    lazy_static! {
-        static ref LINE_RE: Regex = Regex::new(&format!(
-            "{}{s}{}{s}{}{s}{}",
-            COORD_START,
-            POINT,
-            POINT,
-            COORD_END,
-            s = r"\s*"
-        ))
-        .unwrap();
-    }
-
-    LINE_RE.captures_iter(kml).map(|captures| MercatorSegment {
-        a: point(&captures, 1),
-        b: point(&captures, 3),
-    })
-}
-
-fn linear_regression(points: impl Iterator<Item = Mercator>) -> f64 {
-    #[derive(Clone, Copy, Add, Sum)]
-    struct Part {
-        x: f64,
-        y: f64,
-        xy: f64,
-        x2: f64,
-    }
-
-    let input = points.collect::<Vec<_>>();
-    let n = input.len() as f64;
-    let sum = input
-        .into_iter()
-        .map(|point| Part {
-            x: point.x,
-            y: point.y,
-            xy: point.x * point.y,
-            x2: point.x.powi(2),
-        })
-        .sum::<Part>();
-    (n * sum.xy - sum.x * sum.y) / (n * sum.x2 - sum.x.powi(2))
 }
 
 /// Expects a KML file of 3 lines and any number of placemarks. The first line is expected to be
@@ -91,41 +43,34 @@ fn linear_regression(points: impl Iterator<Item = Mercator>) -> f64 {
 /// Calculates the field location as the center of the 50 yard line's intersection with the
 /// sidelines. Calculates the heading as the linear regression of the sideline points and any
 /// additional placemarks.
-pub(crate) fn sidelines_and_50(kml: &str) -> Survey {
-    let mut iter = lines(kml);
-    let fifty = iter.next().unwrap().as_line();
-    let sidelines = iter.take(2).collect::<Vec<_>>();
+fn sidelines_and_50(kml: &str) -> Survey {
+    let mut lines = lines(kml);
+    let fifty = lines.next().unwrap();
+    let sidelines = lines.collect_tuple::<(_, _)>().unwrap();
 
-    let field = MercatorSegment::from(
-        sidelines
-            .iter()
-            .copied()
-            .filter_map(|l| fifty.intersection(l.as_line()))
-            .collect_tuple::<(_, _)>()
-            .unwrap(),
-    )
-    .midpoint();
+    let endpoints = (
+        fifty.intersection(sidelines.0).unwrap(),
+        fifty.intersection(sidelines.1).unwrap(),
+    );
+    let field = (endpoints.0 + endpoints.1) / 2.0;
 
     let mut marks = placemarks(kml).peekable();
     let slope = if marks.peek().is_some() {
         linear_regression(
-            sidelines
-                .into_iter()
-                .flat_map(|line| vec![line.a, line.b])
-                .chain(marks),
+            vec![
+                sidelines.0.start,
+                sidelines.0.end,
+                sidelines.1.start,
+                sidelines.1.end,
+            ]
+            .into_iter()
+            .chain(marks),
         )
     } else {
-        sidelines
-            .into_iter()
-            .map(|line| line.as_line().slope)
-            .sum::<f64>()
-            / 2.0
+        (sidelines.0.slope() + sidelines.1.slope()) / 2.0
     };
 
-    Survey {
-        field,
-        line: MercatorLine::from_slope(slope, field),
-    }
+    Survey::from_slope(field, slope)
 }
 
 /// Expects a KML file of 10 or more placemarks. The first 10 placemarks are expected to be along
@@ -135,34 +80,104 @@ pub(crate) fn sidelines_and_50(kml: &str) -> Survey {
 /// placemarks, the heading is the average of both the parallel and perpendicular lines between the
 /// placemarks. If there are more than 10, the heading is taken as a linear regression of all
 /// placemarks.
-pub(crate) fn hash_mark(kml: &str) -> Survey {
-    let input = placemarks(kml).collect::<Vec<_>>();
-    let field = input.iter().copied().take(10).sum::<Mercator>() / 10.0;
+fn hash_mark(kml: &str) -> Survey {
+    let marks = placemarks(kml).collect::<Vec<_>>();
+    let field = marks
+        .iter()
+        .copied()
+        .take(10)
+        .map(Point::from)
+        .fold(Point::new(0.0, 0.0), |acc, point| acc + point)
+        / 10.0;
 
-    let slope = if input.len() > 10 {
-        linear_regression(input.into_iter())
+    let slope = if marks.len() > 10 {
+        linear_regression(marks.into_iter())
     } else {
-        let mut lines: Vec<_> = input
+        let mut lines: Vec<_> = marks
             .into_iter()
             .tuple_combinations()
-            .map(|(a, b)| (OrdF64(a.distance(b)), a.slope(b)))
+            .map(|(start, end)| {
+                (
+                    OrdF64(Point::from(start).haversine_distance(&end.into())),
+                    Line { start, end }.slope(),
+                )
+            })
             .collect();
         lines.sort_by_key(|(d, _)| *d);
-
-        let mut parallel = lines.split_off(5);
-        parallel.truncate(8);
-        let perpendicular = lines;
-
-        (parallel.into_iter().map(|(_, s)| s).sum::<f64>()
-            + perpendicular
-                .into_iter()
-                .map(|(_, s)| -s.recip())
-                .sum::<f64>())
-            / 13.0
+        lines
+            .into_iter()
+            .skip(5)
+            .take(8)
+            .map(|(_, s)| s)
+            .sum::<f64>()
+            / 8.0
     };
 
-    Survey {
-        field,
-        line: MercatorLine::from_slope(slope, field),
+    Survey::from_slope(field.into(), slope)
+}
+
+// =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
+
+fn linear_regression(points: impl Iterator<Item = Coordinate>) -> f64 {
+    #[derive(Add, Sum)]
+    struct Part {
+        x: f64,
+        y: f64,
+        xy: f64,
+        x2: f64,
+        n: usize,
     }
+
+    let sum = points
+        .map(|point| Part {
+            x: point.x,
+            y: point.y,
+            xy: point.x * point.y,
+            x2: point.x.powi(2),
+            n: 1,
+        })
+        .sum::<Part>();
+    let n = sum.n as f64;
+    (n * sum.xy - sum.x * sum.y) / (n * sum.x2 - sum.x.powi(2))
+}
+
+macro_rules! coord_re {
+    ($fmt:expr) => {{
+        let float_re = r"-?[0-9]+(?:\.[0-9]+)?";
+        Regex::new(&format!(
+            $fmt,
+            start = r"<coordinates>",
+            end = r"</coordinates>",
+            point = format!(r"({0}),({0})(?:,{0})?", float_re),
+            s = r"\s",
+        ))
+    }};
+}
+
+fn placemarks(kml: &str) -> impl Iterator<Item = Coordinate> + '_ {
+    lazy_static! {
+        static ref RE: Regex = coord_re!("{start}{s}*{point}{s}*{end}").unwrap();
+    }
+
+    RE.captures_iter(kml).map(|captures| Coordinate {
+        x: captures[1].parse().unwrap(),
+        y: captures[2].parse().unwrap(),
+    })
+}
+
+fn lines(kml: &str) -> impl Iterator<Item = Line> + '_ {
+    lazy_static! {
+        static ref RE: Regex = coord_re!("{start}{s}*{point}{s}+{point}{s}*{end}").unwrap();
+    }
+
+    RE.captures_iter(kml).map(|captures| Line {
+        start: Coordinate {
+            x: captures[1].parse().unwrap(),
+            y: captures[2].parse().unwrap(),
+        },
+        end: Coordinate {
+            x: captures[3].parse().unwrap(),
+            y: captures[4].parse().unwrap(),
+        },
+    })
 }
