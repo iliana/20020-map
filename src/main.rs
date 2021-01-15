@@ -69,7 +69,7 @@ fn main() -> Result<()> {
             field: LatLonBox::new(
                 center,
                 Length::new::<foot>(160.0),
-                Length::new::<meter>(Point::from(line.start).haversine_distance(&line.end.into())),
+                Length::new::<meter>(line.haversine_length()),
             )
             .adjust_width(survey.field, Length::new::<foot>(160.0)),
             field_bearing: center.bearing_from_slope(line.slope()),

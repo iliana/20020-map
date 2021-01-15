@@ -30,8 +30,7 @@ pub trait LineExt {
 
 impl LineExt for Line {
     fn interpolate(self, length: Length) -> Interpolate {
-        let step =
-            length.get::<meter>() / Point::from(self.start).haversine_distance(&self.end.into());
+        let step = length.get::<meter>() / self.haversine_length();
         Interpolate {
             line: self,
             fraction: 0.0,

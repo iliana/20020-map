@@ -97,10 +97,8 @@ fn hash_mark(kml: &str) -> Survey {
             .into_iter()
             .tuple_combinations()
             .map(|(start, end)| {
-                (
-                    OrdF64(Point::from(start).haversine_distance(&end.into())),
-                    Line { start, end }.slope(),
-                )
+                let line = Line { start, end };
+                (OrdF64(line.haversine_length()), line.slope())
             })
             .collect();
         lines.sort_by_key(|(d, _)| *d);
