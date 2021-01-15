@@ -15,7 +15,7 @@ pub trait CoordinateExt {
 
 impl CoordinateExt for Coordinate {
     fn bearing_from_slope(self, slope: f64) -> f64 {
-        let d_x = 0.0005 / (1.0 + slope.powi(2)).sqrt();
+        let d_x = 0.000005 / (1.0 + slope.powi(2)).sqrt();
         let a = Point::from(self);
         let b = a + Point::new(d_x, slope * d_x);
         a.bearing(b)
