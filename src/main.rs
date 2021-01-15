@@ -26,8 +26,9 @@ use zip::write::{FileOptions, ZipWriter};
 use zip::CompressionMethod;
 
 lazy_static! {
+    static ref FIELD_WIDTH: Length = Length::new::<foot>(160.0);
+    static ref LABEL_WIDTH: Length = *FIELD_WIDTH * 500.0;
     static ref LABEL_HEIGHT: Length = Length::new::<foot>(360.0) * 500.0;
-    static ref LABEL_WIDTH: Length = Length::new::<foot>(160.0) * 500.0;
     static ref LABEL_DIAGONAL: Length = ((*LABEL_HEIGHT).powi(uom::typenum::P2::new())
         + (*LABEL_WIDTH).powi(uom::typenum::P2::new()))
     .sqrt();
@@ -64,14 +65,16 @@ fn main() -> Result<()> {
             images.insert(field_filename, image::field(&team)?);
         }
 
+        let field_length = line
+            .interpolate()
+            .tuple_windows()
+            .map(|(start, end)| Line { start, end }.haversine_length())
+            .sum::<f64>();
+
         fields.push(Field {
             team,
-            field: LatLonBox::new(
-                center,
-                Length::new::<foot>(160.0),
-                Length::new::<meter>(line.haversine_length()),
-            )
-            .adjust_width(survey.field, Length::new::<foot>(160.0)),
+            field: LatLonBox::new(center, *FIELD_WIDTH, Length::new::<meter>(field_length))
+                .adjust_width(survey.field, *FIELD_WIDTH),
             field_bearing: center.bearing_from_slope(line.slope()),
             line: line.interpolate(),
             label: LatLonBox::new(survey.field, *LABEL_WIDTH, *LABEL_HEIGHT),
