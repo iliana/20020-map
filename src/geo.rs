@@ -1,8 +1,6 @@
 pub use geo::prelude::*;
 
 use geo::algorithm::line_interpolate_point::LineInterpolatePoint;
-use uom::si::f64::Length;
-use uom::si::length::meter;
 
 pub type Coordinate = geo::Coordinate<f64>;
 pub type Line = geo::Line<f64>;
@@ -23,14 +21,16 @@ impl CoordinateExt for Coordinate {
 }
 
 pub trait LineExt {
-    fn interpolate(self, length: Length) -> Interpolate;
+    fn interpolate(self) -> Interpolate;
     fn intersection(self, other: Self) -> Option<Coordinate>;
     fn roughly_contains(self, point: Coordinate) -> bool;
 }
 
 impl LineExt for Line {
-    fn interpolate(self, length: Length) -> Interpolate {
-        let step = length.get::<meter>() / self.haversine_length();
+    fn interpolate(self) -> Interpolate {
+        let delta = self.delta();
+        let length = (delta.x.powi(2) + delta.y.powi(2)).sqrt();
+        let step = 0.05 / length;
         Interpolate {
             line: self,
             fraction: 0.0,

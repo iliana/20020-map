@@ -21,7 +21,7 @@ use std::fs::{self, File};
 use std::io::{prelude::*, BufReader, ErrorKind};
 use std::path::Path;
 use uom::si::f64::Length;
-use uom::si::length::{foot, meter, mile};
+use uom::si::length::{foot, meter};
 use zip::write::{FileOptions, ZipWriter};
 use zip::CompressionMethod;
 
@@ -73,7 +73,7 @@ fn main() -> Result<()> {
             )
             .adjust_width(survey.field, Length::new::<foot>(160.0)),
             field_bearing: center.bearing_from_slope(line.slope()),
-            line: line.interpolate(Length::new::<mile>(5.0)),
+            line: line.interpolate(),
             label: LatLonBox::new(survey.field, *LABEL_WIDTH, *LABEL_HEIGHT),
             label_bearing: survey.bearing,
             label_region: LatLonBox::new(survey.field, *LABEL_DIAGONAL, *LABEL_DIAGONAL),
