@@ -69,7 +69,6 @@
 	<Folder>
 		<name>Grambling State</name>
 		<open>1</open>
-		<description>navarro::centerfit</description>
 		<Style>
 			<ListStyle>
 				<listItemType>check</listItemType>
