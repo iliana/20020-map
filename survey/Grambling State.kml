@@ -12,16 +12,6 @@
 		<ListStyle>
 		</ListStyle>
 	</Style>
-	<Style id="s_ylw-pushpin">
-		<IconStyle>
-			<scale>1.2</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
-			</Icon>
-		</IconStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
@@ -32,9 +22,54 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
+	<StyleMap id="msn_open-diamond">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_open-diamond</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_open-diamond</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_open-diamond">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_open-diamond">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<Folder>
-		<name>My Places</name>
+		<name>Grambling State</name>
 		<open>1</open>
+		<description>navarro::centerfit</description>
 		<Style>
 			<ListStyle>
 				<listItemType>check</listItemType>
@@ -51,6 +86,7 @@
 			</ListStyle>
 		</Style>
 		<Placemark>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72133569077621</longitude>
 				<latitude>32.52103633866707</latitude>
@@ -67,7 +103,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72120246422317</longitude>
 				<latitude>32.52093593004416</latitude>
@@ -84,7 +120,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72105884276027</longitude>
 				<latitude>32.52080749190198</latitude>
@@ -101,7 +137,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72091620525153</longitude>
 				<latitude>32.52069008496365</latitude>
@@ -118,7 +154,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72100860819064</longitude>
 				<latitude>32.52061135747526</latitude>
@@ -135,7 +171,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72116047494549</longitude>
 				<latitude>32.5207009891236</latitude>
@@ -152,7 +188,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72127594916941</longitude>
 				<latitude>32.52080651946352</latitude>
@@ -169,7 +205,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72141385556611</longitude>
 				<latitude>32.52091715478985</latitude>
@@ -186,7 +222,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72154487254603</longitude>
 				<latitude>32.52101147379756</latitude>
@@ -203,7 +239,7 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<open>1</open>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-92.72146175592702</longitude>
 				<latitude>32.52116678231199</latitude>
@@ -217,6 +253,23 @@
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-92.72147728396229,32.52116963586714,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch12 00:07:01.854</name>
+			<Camera>
+				<longitude>-97.00622132012072</longitude>
+				<latitude>36.12814923311672</latitude>
+				<altitude>406.5526603854061</altitude>
+				<heading>-91.0228895581687</heading>
+				<tilt>0.1732305939897236</tilt>
+				<roll>-1.869088111999464</roll>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</Camera>
+			<styleUrl>#msn_open-diamond</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-97.00612821496915,36.12816225398504,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
