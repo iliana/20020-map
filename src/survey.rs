@@ -91,7 +91,11 @@ fn hash_mark(kml: &str) -> Survey {
         / 10.0;
 
     let slope = if marks.len() > 10 {
-        linear_regression(marks.into_iter())
+        if config(kml, "centerfit") {
+            linear_regression(marks.into_iter().skip(10).chain(vec![field.into()]))
+        } else {
+            linear_regression(marks.into_iter())
+        }
     } else {
         let mut lines: Vec<_> = marks
             .into_iter()
@@ -137,6 +141,10 @@ fn linear_regression(points: impl Iterator<Item = Coordinate>) -> f64 {
         .sum::<Part>();
     let n = sum.n as f64;
     (n * sum.xy - sum.x * sum.y) / (n * sum.x2 - sum.x.powi(2))
+}
+
+fn config(kml: &str, option: &str) -> bool {
+    kml.contains(&format!("[[navarro::{}]]", option))
 }
 
 macro_rules! coord_re {
