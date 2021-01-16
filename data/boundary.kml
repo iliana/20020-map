@@ -1,9 +1,24 @@
-# Data from US Census Bureau Cartographic Boundary Files,
-# United States Outline (1:20,000,000) KML (cb_2019_us_nation_20m.kml)
-# https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
-# Great Lakes boundary augmented with data from ArcGIS, Canada and US Border
-# Provided through Homeland Infrastructure Foundation-Level Data
-# https://hifld-geoplatform.opendata.arcgis.com/datasets/canada-and-us-border
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Data from US Census Bureau Cartographic Boundary Files,
+United States Outline (1:20,000,000) KML (cb_2019_us_nation_20m.kml)
+https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
+
+Great Lakes boundary augmented with data from ArcGIS, Canada and US Border
+Provided through Homeland Infrastructure Foundation-Level Data
+https://hifld-geoplatform.opendata.arcgis.com/datasets/canada-and-us-border
+-->
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document>
+        <Placemark>
+            <Polygon>
+                <extrude>0</extrude>
+                <tessellate>1</tessellate>
+                <altitudeMode>clampToGround</altitudeMode>
+                <outerBoundaryIs>
+                    <LinearRing>
+                        <coordinates>
+
 -124.725839,48.386012,0.0
 -124.669265,48.296353,0.0
 -124.690389,48.219745,0.0
@@ -2514,3 +2529,20 @@
 -124.546259,48.353594,0.0
 -124.653243,48.390691,0.0
 -124.725839,48.386012,0.0
+
+                        </coordinates>
+                    </LinearRing>
+                </outerBoundaryIs>
+            </Polygon>
+            <Style>
+                <LineStyle>
+                    <color>ffbc822f</color>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle>
+                    <color>7fe1ca9e</color>
+                </PolyStyle>
+            </Style>
+        </Placemark>
+    </Document>
+</kml>

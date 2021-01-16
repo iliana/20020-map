@@ -36,7 +36,7 @@ lazy_static! {
 
 fn main() -> Result<()> {
     let boundary = Boundary::load(BufReader::new(File::open(
-        root().join("data").join("boundary.csv"),
+        root().join("data").join("boundary.kml"),
     )?));
 
     let mut fields = Vec::new();
@@ -194,14 +194,12 @@ impl Boundary {
                 .lines()
                 .map(|line| line.unwrap())
                 .filter(|line| !line.starts_with('#'))
-                .map(|line| {
-                    Coordinate::from(
-                        line.splitn(3, ',')
-                            .take(2)
-                            .map(|s| s.parse().unwrap())
-                            .collect_tuple::<(_, _)>()
-                            .unwrap(),
-                    )
+                .filter_map(|line| {
+                    line.trim()
+                        .splitn(3, ',')
+                        .take(2)
+                        .filter_map(|f| f.parse().ok())
+                        .collect_tuple::<(f64, f64)>()
                 })
                 .collect(),
         )
