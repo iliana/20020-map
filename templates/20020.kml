@@ -13,6 +13,7 @@
                 Engineer: Frank Bi<br>
                 Data: Google, Landsat/Copernicus, LDEO-Columbia, NSF, NOAA, SIO, U.S. Navy, NGA, GEBCO
             </p>
+            <p>Revision <a href="https://github.com/iliana/20020-map/tree/{{ revision }}">{{ revision }}</a></p>
         ]]></description>
         {% if kmz %}
         <Folder>

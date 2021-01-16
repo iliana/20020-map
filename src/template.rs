@@ -6,6 +6,7 @@ use askama::Template;
 #[template(path = "20020.kml", escape = "xml")]
 pub(crate) struct Output<'a> {
     pub kmz: bool,
+    pub revision: &'a str,
     pub fields: &'a [Field],
 }
 

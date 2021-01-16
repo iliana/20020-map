@@ -16,10 +16,12 @@ use askama::Template;
 use hex::FromHex;
 use itertools::Itertools;
 use lazy_static::lazy_static;
+use std::borrow::Cow;
 use std::collections::HashMap;
 use std::fs::{self, File};
 use std::io::{prelude::*, BufReader, ErrorKind};
 use std::path::Path;
+use std::process::Command;
 use uom::si::f64::Length;
 use uom::si::length::{foot, meter};
 use zip::write::{FileOptions, ZipWriter};
@@ -35,6 +37,17 @@ lazy_static! {
 }
 
 fn main() -> Result<()> {
+    let revision = match option_env!("COMMIT_REF") {
+        Some(rev) => Cow::from(rev),
+        None => String::from_utf8(
+            Command::new("git")
+                .args(&["rev-parse", "HEAD"])
+                .output()?
+                .stdout,
+        )?
+        .into(),
+    };
+
     let boundary = Boundary::load(BufReader::new(File::open(
         root().join("data").join("boundary.kml"),
     )?));
@@ -91,8 +104,9 @@ fn main() -> Result<()> {
     fs::write(
         site_dir.join("20020.kml"),
         Output {
-            fields: &fields,
             kmz: false,
+            revision: &revision,
+            fields: &fields,
         }
         .render()?
         .as_bytes(),
@@ -100,8 +114,9 @@ fn main() -> Result<()> {
     zip.start_file("doc.kml", FileOptions::default())?;
     zip.write_all(
         Output {
-            fields: &fields,
             kmz: true,
+            revision: &revision,
+            fields: &fields,
         }
         .render()?
         .as_bytes(),
