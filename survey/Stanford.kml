@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Stanford.kml</name>
+	<Style id="inline">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="inline0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline9</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline1">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="inline2">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="inline3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="inline4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline7</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline5">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="msn_open-diamond">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_open-diamond</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_open-diamond</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_open-diamond">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="inline6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline7">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="inline8">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_open-diamond">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="inline9">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="inline10">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>Stanford</name>
+		<open>1</open>
+		<Placemark>
+			<name>Line Measure</name>
+			<visibility>0</visibility>
+			<styleUrl>#inline3</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					-122.1615646714441,37.43499834499862,9.761628780410049 -122.1605385518275,37.43409143874305,10.14962182078678 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>Line Measure</name>
+			<visibility>0</visibility>
+			<styleUrl>#inline0</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					-122.1616591128519,37.43493487327888,9.768550388276868 -122.1606308132037,37.43402545038665,8.299975487694729 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>Line Measure</name>
+			<visibility>0</visibility>
+			<styleUrl>#inline4</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					-122.1614567039606,37.43507577796312,9.628781296171686 -122.1604311240203,37.43416865835921,9.480018782020119 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>Line Measure</name>
+			<visibility>0</visibility>
+			<styleUrl>#inline6</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					-122.1617669826412,37.434858113473,9.516637366550148 -122.1607384849757,37.43394801170895,9.462675691373452 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>ch3 &quot;this one with stanford&quot;</name>
+			<Camera>
+				<longitude>-116.8371601930681</longitude>
+				<latitude>32.69061596305436</latitude>
+				<altitude>917.9333566203006</altitude>
+				<heading>-44.8562744833426</heading>
+				<tilt>12.51688001955488</tilt>
+				<roll>-0.6352856601729612</roll>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</Camera>
+			<styleUrl>#msn_open-diamond</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-116.8382991047084,32.69068990691739,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
