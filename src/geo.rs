@@ -59,8 +59,11 @@ impl LineExt for Line {
     }
 
     fn roughly_contains(self, point: Coordinate) -> bool {
-        (self.start.x.min(self.end.x)..=self.start.x.max(self.end.x)).contains(&point.x)
-            && (self.start.y.min(self.end.y)..=self.start.y.max(self.end.y)).contains(&point.y)
+        let x_min = self.start.x.min(self.end.x) - 0.000_001;
+        let x_max = self.start.x.max(self.end.x) + 0.000_001;
+        let y_min = self.start.y.min(self.end.y) - 0.000_001;
+        let y_max = self.start.y.max(self.end.y) + 0.000_001;
+        (x_min..=x_max).contains(&point.x) && (y_min..=y_max).contains(&point.y)
     }
 }
 
