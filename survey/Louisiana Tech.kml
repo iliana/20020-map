@@ -12,14 +12,6 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="s_ylw-pushpin_hl">
-		<IconStyle>
-			<scale>1.4</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
-			</Icon>
-		</IconStyle>
-	</Style>
 	<Style id="s_ylw-pushpin">
 		<IconStyle>
 			<scale>1.2</scale>
@@ -28,8 +20,47 @@
 			</Icon>
 		</IconStyle>
 	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
 		<name>Louisiana Tech</name>
+		<open>1</open>
 		<Placemark>
 			<name>Untitled Placemark</name>
 			<LookAt>
@@ -198,6 +229,30 @@
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-92.65617867417502,32.53238561923282,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch5 &quot;All right, I&apos;ll be back.&quot;</name>
+			<LookAt>
+				<gx:TimeStamp><when>2018-04-13</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>-95.10510982450445</longitude>
+				<latitude>36.00380349101752</latitude>
+				<altitude>0</altitude>
+				<heading>-89.28586140754437</heading>
+				<tilt>0</tilt>
+				<range>574.1763089949009</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-95.10465879730273,36.00322149137762,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
