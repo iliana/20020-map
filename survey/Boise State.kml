@@ -2,6 +2,14 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>Boise State.kml</name>
+	<Style id="sh_open-diamond">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
 	<Style id="sn_open-diamond">
 		<IconStyle>
 			<scale>1.2</scale>
@@ -9,33 +17,6 @@
 				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
 			</Icon>
 		</IconStyle>
-		<BalloonStyle>
-		</BalloonStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
-	<StyleMap id="msn_ylw-pushpin">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#sn_ylw-pushpin</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#sh_ylw-pushpin</styleUrl>
-		</Pair>
-	</StyleMap>
-	<Style id="sn_ylw-pushpin">
-		<IconStyle>
-			<scale>1.1</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
-			</Icon>
-			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
-		</IconStyle>
-		<BalloonStyle>
-		</BalloonStyle>
-		<ListStyle>
-		</ListStyle>
 	</Style>
 	<StyleMap id="msn_open-diamond">
 		<Pair>
@@ -47,33 +28,38 @@
 			<styleUrl>#sh_open-diamond</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="sh_ylw-pushpin">
-		<IconStyle>
-			<scale>1.3</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
-			</Icon>
-			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
-		</IconStyle>
-		<BalloonStyle>
-		</BalloonStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
-	<Style id="sh_open-diamond">
+	<Style id="s_ylw-pushpin_hl">
 		<IconStyle>
 			<scale>1.4</scale>
 			<Icon>
 				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
 			</Icon>
 		</IconStyle>
-		<BalloonStyle>
-		</BalloonStyle>
 		<ListStyle>
 		</ListStyle>
 	</Style>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
-		<name>Boise State.kml</name>
+		<name>Boise State</name>
 		<open>1</open>
 		<Placemark>
 			<LookAt>
@@ -245,20 +231,20 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<name>Untitled Placemark</name>
-			<LookAt>
-				<longitude>-116.4501654195569</longitude>
-				<latitude>32.59129198224211</latitude>
-				<altitude>0</altitude>
-				<heading>-92.35233183294146</heading>
-				<tilt>0</tilt>
-				<range>713.2655711797984</range>
+			<name>ch7 &quot;where you can make the run and he can&apos;t.&quot;</name>
+			<Camera>
+				<longitude>-116.4498832186793</longitude>
+				<latitude>32.59199074503741</latitude>
+				<altitude>275.1074607763443</altitude>
+				<heading>173.1240791162692</heading>
+				<tilt>1.519167164977866</tilt>
+				<roll>-90.20728930336963</roll>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
-			</LookAt>
-			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			</Camera>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-116.4498055106006,32.5916294183978,0</coordinates>
+				<coordinates>-116.4497717990532,32.59161860475481,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
