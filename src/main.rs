@@ -47,6 +47,7 @@ fn main() -> Result<()> {
         )?
         .into(),
     };
+    let revision = revision.trim();
 
     let boundary = Boundary::load(BufReader::new(File::open(
         root().join("data").join("boundary.kml"),
