@@ -13,7 +13,7 @@ Ohio State,OH ST,#CE0F3D
 Air Force,AF,#0033A0
 Akron,AKRON,#041E42
 Alabama A&M,ALA&M,#660000
-Alabama State,AL ST,#C99700
+Alabama State,ALST,#C99700
 Appalachian State,APP,#FFCC00
 Arizona,AZ,#C10230
 Arizona State,AZ ST,#FFC627
@@ -74,7 +74,7 @@ Oregon,ORE,#036936
 Oregon State,OR ST,#D73F09
 Penn State,PENN,#FFFFFF
 Pittsburgh,PITT,#FFB81C
-Prairie View A&M,PV A&M,#4F2582
+Prairie View A&M,PVAM,#4F2582
 San Diego State,SDSU,#C41230
 San José State,SJSU,#FFB81A
 SMU,SMU,#CC0035
@@ -84,9 +84,9 @@ Southern Miss,SMISS,#FFD046
 Stanford,STAN,#8C1515
 Syracuse,SYR,#D44500
 Texas,TEX,#BF5700
-Texas A&M,TX A&M,#500000
+Texas A&M,TXAM,#500000
 TCU,TCU,#4D1979
-Texas State,TX ST,#8D734A
+Texas State,TXST,#8D734A
 Texas Tech,TTECH,#CC0000
 Toledo,TOL,#FFD200
 Troy,TROY,#6D0017
