@@ -6,12 +6,8 @@ This is a project to recreate the map for the Bowl Game, as envisioned in Secret
 
 The best way to help right now is with field surveying. [Here's the process.](survey/README.md)
 
-Progress:
-- [x] List of all teams and colors
-- [ ] [Survey](survey/) all 111 fields
-- [x] Draw field guide lines in KML
-- [x] Draw fields in KML
-- [x] Draw field markers (e.g. "LOU" where the 0 yard line is) in KML
+## Credits
 
-Stretch goals:
-- Web version: Zoom to any yard line on any field
+Map by [iliana](https://linuxwit.ch). Special thanks to:
+[spiders](https://quine.xyz),
+thunkii
