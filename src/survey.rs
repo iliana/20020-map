@@ -58,13 +58,14 @@ fn sidelines_and_50(kml: &str) -> Survey {
     let fifty = lines.next().unwrap();
     let sidelines = lines.collect_tuple::<(_, _)>().unwrap();
 
-    sidelines_and_50_inner(fifty, sidelines, placemarks(kml))
+    sidelines_and_50_inner(fifty, sidelines, placemarks(kml), config(kml, "centerfit"))
 }
 
 fn sidelines_and_50_inner(
     fifty: Line,
     sidelines: (Line, Line),
     marks: impl Iterator<Item = Coordinate>,
+    centerfit: bool,
 ) -> Survey {
     let endpoints = (
         fifty.intersection(sidelines.0).unwrap(),
@@ -74,16 +75,16 @@ fn sidelines_and_50_inner(
 
     let mut marks = marks.peekable();
     let slope = if marks.peek().is_some() {
-        linear_regression(
-            vec![
+        if centerfit {
+            linear_regression(marks.chain(vec![field]))
+        } else {
+            linear_regression(marks.chain(vec![
                 sidelines.0.start,
                 sidelines.0.end,
                 sidelines.1.start,
                 sidelines.1.end,
-            ]
-            .into_iter()
-            .chain(marks),
-        )
+            ]))
+        }
     } else {
         (sidelines.0.slope() + sidelines.1.slope()) / 2.0
     };
@@ -158,7 +159,7 @@ fn syracuse(kml: &str) -> Survey {
     };
     let sidelines = lines(kml).collect_tuple::<(_, _)>().unwrap();
 
-    sidelines_and_50_inner(fifty, sidelines, points)
+    sidelines_and_50_inner(fifty, sidelines, points, false)
 }
 
 // =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
