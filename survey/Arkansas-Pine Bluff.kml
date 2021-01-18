@@ -18,6 +18,16 @@
 			</Icon>
 		</IconStyle>
 	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
@@ -28,8 +38,29 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
 		<name>Arkansas-Pine Bluff</name>
+		<open>1</open>
 		<Placemark>
 			<name>Untitled Placemark</name>
 			<LookAt>
@@ -268,6 +299,23 @@
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-92.02178014927917,34.25353513389905,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch12 00:06:53.646</name>
+			<LookAt>
+				<longitude>-94.28068107961015</longitude>
+				<latitude>36.18055123863921</latitude>
+				<altitude>0</altitude>
+				<heading>-93.28495244160619</heading>
+				<tilt>0</tilt>
+				<range>3039.078774808723</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-94.28314400067629,36.18063945318899,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
