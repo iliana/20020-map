@@ -33,6 +33,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Louisiana Tech
 * Mississippi State
 * Missouri
+* Nevada
 * Oklahoma State
 * Ole Miss
 * Oregon State
