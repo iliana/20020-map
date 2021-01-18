@@ -20,6 +20,16 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<Style id="s_ylw-pushpin">
 		<IconStyle>
 			<scale>1.2</scale>
@@ -28,8 +38,30 @@
 			</Icon>
 		</IconStyle>
 	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
 		<name>Louisville</name>
+		<open>1</open>
+		<description>[[navarro::centerfit]]</description>
 		<Placemark>
 			<name>Untitled Placemark</name>
 			<LookAt>
@@ -198,6 +230,23 @@
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-85.75880991035156,38.20624142738431,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch2 &quot;but thanks to him ...&quot;</name>
+			<LookAt>
+				<longitude>-84.26263455965051</longitude>
+				<latitude>46.49483829267896</latitude>
+				<altitude>0</altitude>
+				<heading>-2.271285645637008</heading>
+				<tilt>0</tilt>
+				<range>576.9965188740919</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-84.26222729012692,46.49535606569875,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
