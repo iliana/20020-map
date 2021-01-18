@@ -18,6 +18,26 @@
 			</Icon>
 		</IconStyle>
 	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
@@ -28,8 +48,19 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
 		<name>Alabama State</name>
+		<open>1</open>
 		<Placemark>
 			<name>Untitled Placemark</name>
 			<LookAt>
@@ -198,6 +229,23 @@
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-86.28940327478898,32.36407709712923,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch12 00:06:45.338</name>
+			<LookAt>
+				<longitude>-91.51810415579209</longitude>
+				<latitude>36.23526717406108</latitude>
+				<altitude>0</altitude>
+				<heading>-90.62675377541574</heading>
+				<tilt>0</tilt>
+				<range>2798.87759644709</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-91.51866184147735,36.23413801616331,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
