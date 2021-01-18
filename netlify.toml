@@ -1,3 +1,3 @@
 [build]
 publish = "site"
-command = "rustup install 1.49.0 --profile minimal && cargo +1.49.0 run --release"
+command = "rustup install 1.49.0 --profile minimal && cargo +1.49.0 run --release --no-default-features"

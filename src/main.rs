@@ -27,16 +27,44 @@ use uom::si::length::{foot, meter};
 use zip::write::{FileOptions, ZipWriter};
 use zip::CompressionMethod;
 
-lazy_static! {
-    static ref FIELD_WIDTH: Length = Length::new::<foot>(160.0);
-    static ref LABEL_WIDTH: Length = *FIELD_WIDTH * 500.0;
-    static ref LABEL_HEIGHT: Length = Length::new::<foot>(360.0) * 500.0;
-    static ref LABEL_DIAGONAL: Length = ((*LABEL_HEIGHT).powi(uom::typenum::P2::new())
-        + (*LABEL_WIDTH).powi(uom::typenum::P2::new()))
-    .sqrt();
+#[cfg(feature = "hotwatch")]
+fn main() -> Result<()> {
+    use hotwatch::blocking::{Flow, Hotwatch};
+    use hotwatch::Event;
+
+    if std::env::args().any(|arg| arg == "watch") {
+        fn handler(event: Event) -> Flow {
+            eprint!("{:?} ... ", event);
+            if let Err(err) = run() {
+                eprintln!("\n{:?}", err);
+                Flow::Exit
+            } else {
+                eprintln!("done.");
+                Flow::Continue
+            }
+        }
+
+        let mut hotwatch = Hotwatch::new()?;
+        hotwatch.watch(root().join("survey"), handler).unwrap();
+        hotwatch
+            .watch(root().join("data").join("boundary.kml"), handler)
+            .unwrap();
+        hotwatch
+            .watch(root().join("data").join("teams.csv"), handler)
+            .unwrap();
+        hotwatch.run();
+    } else {
+        run()?;
+    }
+    Ok(())
 }
 
+#[cfg(not(feature = "hotwatch"))]
 fn main() -> Result<()> {
+    run()
+}
+
+fn run() -> Result<()> {
     let revision = match option_env!("COMMIT_REF") {
         Some(rev) => Cow::from(rev),
         None => String::from_utf8(
@@ -84,6 +112,15 @@ fn main() -> Result<()> {
             .tuple_windows()
             .map(|(start, end)| Line { start, end }.haversine_length())
             .sum::<f64>();
+
+        lazy_static! {
+            static ref FIELD_WIDTH: Length = Length::new::<foot>(160.0);
+            static ref LABEL_WIDTH: Length = *FIELD_WIDTH * 500.0;
+            static ref LABEL_HEIGHT: Length = Length::new::<foot>(360.0) * 500.0;
+            static ref LABEL_DIAGONAL: Length = ((*LABEL_HEIGHT).powi(uom::typenum::P2::new())
+                + (*LABEL_WIDTH).powi(uom::typenum::P2::new()))
+            .sqrt();
+        }
 
         fields.push(Field {
             team,
