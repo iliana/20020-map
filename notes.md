@@ -12,6 +12,7 @@
 ## High-confidence fields
 These are fields I've been able to cross-check accurately from images / video in _20020_. All other fields are best-effort without further data.
 
+* Ball State
 * Boise State
 * Central Michigan
 * Charlotte
