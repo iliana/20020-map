@@ -13,6 +13,7 @@
 These are fields I've been able to cross-check accurately from images / video in _20020_. All other fields are best-effort without further data.
 
 * Boise State
+* Charlotte
 * Clemson
 * Eastern Michigan
 * Fresno State
@@ -23,6 +24,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Indiana
 * Kansas
 * Kansas State
+* Kentucky
 * Louisiana Tech
 * Mississippi State
 * Oklahoma State
