@@ -2,14 +2,6 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>Central Michigan.kml</name>
-	<Style id="s_ylw-pushpin">
-		<IconStyle>
-			<scale>1.2</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
-			</Icon>
-		</IconStyle>
-	</Style>
 	<Style id="s_ylw-pushpin_hl">
 		<IconStyle>
 			<scale>1.4</scale>
@@ -28,8 +20,47 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
 		<name>Central Michigan</name>
+		<open>1</open>
 		<Placemark>
 			<name>Untitled Placemark</name>
 			<LookAt>
@@ -198,6 +229,23 @@
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-84.77092927666399,43.57796114924478,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch8 00:01:50.560</name>
+			<LookAt>
+				<longitude>-84.66037261675865</longitude>
+				<latitude>34.29615908909998</latitude>
+				<altitude>0</altitude>
+				<heading>-103.861401904384</heading>
+				<tilt>82.58719685255832</tilt>
+				<range>1230.903775847118</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-84.65917717542655,34.30021954949663,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
