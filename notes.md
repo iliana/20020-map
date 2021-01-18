@@ -13,6 +13,7 @@ These are fields I've been able to cross-check accurately from images / video in
 
 * Alabama State
 * Arkansas-Pine Bluff
+* BYU
 * Ball State
 * Boise State
 * Central Michigan

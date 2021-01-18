@@ -30,7 +30,7 @@ impl Survey {
 }
 
 pub fn default(kml: &str) -> Survey {
-    if kml.contains("<name>Stanford</name>") {
+    if kml.contains("<name>BYU</name>") || kml.contains("<name>Stanford</name>") {
         stanford(kml)
     } else if kml.contains("<LineString>") {
         sidelines_and_50(kml)
@@ -129,7 +129,13 @@ fn stanford(kml: &str) -> Survey {
         .map(Point::from)
         .fold(Point::new(0.0, 0.0), |acc, point| acc + point)
         / (lines.len() * 2) as f64;
-    let slope = linear_regression(placemarks(kml).into_iter().chain(vec![field.into()]));
+
+    let mut marks = placemarks(kml).peekable();
+    let slope = if marks.peek().is_some() {
+        linear_regression(marks.chain(vec![field.into()]))
+    } else {
+        lines.iter().copied().map(|line| line.slope()).sum::<f64>() / lines.len() as f64
+    };
 
     Survey::from_slope(field.into(), slope)
 }
