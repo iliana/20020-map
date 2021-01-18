@@ -37,6 +37,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Nevada
 * Oklahoma State
 * Ole Miss
+* Oregon
 * Oregon State
 * Purdue
 * San Diego State
