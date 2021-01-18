@@ -31,6 +31,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Kentucky
 * Louisiana Tech
 * Mississippi State
+* Missouri
 * Oklahoma State
 * Ole Miss
 * Oregon State
