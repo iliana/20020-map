@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
-	<name>Miami.kml</name>
-	<StyleMap id="m_ylw-pushpin">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#s_ylw-pushpin</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
-		</Pair>
-	</StyleMap>
+	<name>Miami (Ohio).kml</name>
 	<Style id="s_ylw-pushpin_hl">
 		<IconStyle>
 			<scale>1.4</scale>
@@ -28,10 +18,52 @@
 			</Icon>
 		</IconStyle>
 	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
-		<name>Miami</name>
+		<name>Miami (Ohio)</name>
+		<open>1</open>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73295996410702</longitude>
 				<latitude>39.5198510298715</latitude>
@@ -49,6 +81,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73290665754691</longitude>
 				<latitude>39.51969121500662</latitude>
@@ -66,6 +99,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73285500361332</longitude>
 				<latitude>39.51953103578045</latitude>
@@ -83,6 +117,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73280057158483</longitude>
 				<latitude>39.51936594724424</latitude>
@@ -100,6 +135,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73275723688296</longitude>
 				<latitude>39.51920653228623</latitude>
@@ -117,6 +153,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73289365039041</longitude>
 				<latitude>39.51918614092725</latitude>
@@ -134,6 +171,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73294699617381</longitude>
 				<latitude>39.51935185546161</latitude>
@@ -151,6 +189,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73299499257607</longitude>
 				<latitude>39.51950417950808</latitude>
@@ -168,6 +207,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.73304486640254</longitude>
 				<latitude>39.51966570684126</latitude>
@@ -185,6 +225,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Untitled Placemark</name>
+			<visibility>0</visibility>
 			<LookAt>
 				<longitude>-84.7330966562813</longitude>
 				<latitude>39.51982882171102</latitude>
@@ -198,6 +239,23 @@
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-84.73309785368761,39.51983339592984,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch9 00:02:44.548</name>
+			<LookAt>
+				<longitude>-87.205371542226</longitude>
+				<latitude>47.22908146044015</latitude>
+				<altitude>0</altitude>
+				<heading>-0.8393537933989557</heading>
+				<tilt>0</tilt>
+				<range>6495.156041775737</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-87.19881492502232,47.23710685482727,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
