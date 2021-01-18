@@ -18,6 +18,26 @@
 			</Icon>
 		</IconStyle>
 	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
@@ -28,8 +48,19 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
 		<name>Kentucky</name>
+		<open>1</open>
 		<Placemark>
 			<name>Untitled Placemark</name>
 			<LookAt>
@@ -198,6 +229,23 @@
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
 				<coordinates>-84.50556580506765,38.02287514339202,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch9 00:01:35.829</name>
+			<LookAt>
+				<longitude>-86.99644604902534</longitude>
+				<latitude>39.21311485001282</latitude>
+				<altitude>0</altitude>
+				<heading>-4.597241898771044</heading>
+				<tilt>12.15960249149758</tilt>
+				<range>550.3718794242835</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-86.99500933210626,39.2131882946278,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
