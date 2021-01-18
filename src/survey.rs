@@ -30,8 +30,16 @@ impl Survey {
 }
 
 pub fn default(kml: &str) -> Survey {
-    if kml.contains("<name>BYU</name>") || kml.contains("<name>Stanford</name>") {
+    macro_rules! team {
+        ($name:expr) => {
+            kml.contains(concat!("<name>", $name, "</name>"));
+        };
+    }
+
+    if team!("Stanford") || team!("BYU") {
         stanford(kml)
+    } else if team!("Syracuse") {
+        syracuse(kml)
     } else if kml.contains("<LineString>") {
         sidelines_and_50(kml)
     } else {
@@ -50,13 +58,21 @@ fn sidelines_and_50(kml: &str) -> Survey {
     let fifty = lines.next().unwrap();
     let sidelines = lines.collect_tuple::<(_, _)>().unwrap();
 
+    sidelines_and_50_inner(fifty, sidelines, placemarks(kml))
+}
+
+fn sidelines_and_50_inner(
+    fifty: Line,
+    sidelines: (Line, Line),
+    marks: impl Iterator<Item = Coordinate>,
+) -> Survey {
     let endpoints = (
         fifty.intersection(sidelines.0).unwrap(),
         fifty.intersection(sidelines.1).unwrap(),
     );
     let field = (endpoints.0 + endpoints.1) / 2.0;
 
-    let mut marks = placemarks(kml).peekable();
+    let mut marks = marks.peekable();
     let slope = if marks.peek().is_some() {
         linear_regression(
             vec![
@@ -84,17 +100,11 @@ fn sidelines_and_50(kml: &str) -> Survey {
 /// placemarks.
 fn hash_mark(kml: &str) -> Survey {
     let marks = placemarks(kml).collect::<Vec<_>>();
-    let field = marks
-        .iter()
-        .copied()
-        .take(10)
-        .map(Point::from)
-        .fold(Point::new(0.0, 0.0), |acc, point| acc + point)
-        / 10.0;
+    let field = coord_average(marks.iter().copied().take(10));
 
     let slope = if marks.len() > 10 {
         if config(kml, "centerfit") {
-            linear_regression(marks.into_iter().skip(10).chain(vec![field.into()]))
+            linear_regression(marks.into_iter().skip(10).chain(vec![field]))
         } else {
             linear_regression(marks.into_iter())
         }
@@ -117,30 +127,50 @@ fn hash_mark(kml: &str) -> Survey {
             / 8.0
     };
 
-    Survey::from_slope(field.into(), slope)
+    Survey::from_slope(field, slope)
 }
 
 fn stanford(kml: &str) -> Survey {
     let lines = lines(kml).collect::<Vec<_>>();
-    let field = lines
-        .iter()
-        .copied()
-        .flat_map(|line| vec![line.start, line.end])
-        .map(Point::from)
-        .fold(Point::new(0.0, 0.0), |acc, point| acc + point)
-        / (lines.len() * 2) as f64;
+    let field = coord_average(
+        lines
+            .iter()
+            .copied()
+            .flat_map(|line| vec![line.start, line.end]),
+    );
 
     let mut marks = placemarks(kml).peekable();
     let slope = if marks.peek().is_some() {
-        linear_regression(marks.chain(vec![field.into()]))
+        linear_regression(marks.chain(vec![field]))
     } else {
         lines.iter().copied().map(|line| line.slope()).sum::<f64>() / lines.len() as f64
     };
 
-    Survey::from_slope(field.into(), slope)
+    Survey::from_slope(field, slope)
+}
+
+// First two placemarks create the 50 yard line; first two lines are sidelines. Sorta :)
+fn syracuse(kml: &str) -> Survey {
+    let mut points = placemarks(kml);
+    let fifty = Line {
+        start: points.next().unwrap(),
+        end: points.next().unwrap(),
+    };
+    let sidelines = lines(kml).collect_tuple::<(_, _)>().unwrap();
+
+    sidelines_and_50_inner(fifty, sidelines, points)
 }
 
 // =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=
+
+fn coord_average(points: impl Iterator<Item = Coordinate>) -> Coordinate {
+    let (n, sum) = points
+        .map(Point::from)
+        .fold((0, Point::new(0.0, 0.0)), |(n, acc), point| {
+            (n + 1, acc + point)
+        });
+    (sum / n as f64).into()
+}
 
 fn linear_regression(points: impl Iterator<Item = Coordinate>) -> f64 {
     #[derive(Add, Sum)]
