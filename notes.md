@@ -19,6 +19,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Central Michigan
 * Charlotte
 * Clemson
+* Colorado State
 * Eastern Michigan
 * Fresno State
 * Georgia
