@@ -21,12 +21,12 @@
             <p>Revision <a href="https://github.com/iliana/20020-map/tree/{{ revision }}">{{ revision }}</a></p>
         ]]></description>
         <LookAt>
-            <longitude>-100.1880648779034</longitude>
-            <latitude>38.62136210408951</latitude>
+            <longitude>-97.726543</longitude>
+            <latitude>37.511020</latitude>
             <altitude>0</altitude>
             <heading>0</heading>
             <tilt>0</tilt>
-            <range>3900000</range>
+            <range>4200000</range>
             <gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
         </LookAt>
         {% if kmz %}
