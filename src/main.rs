@@ -32,6 +32,8 @@ fn main() -> Result<()> {
     use hotwatch::blocking::{Flow, Hotwatch};
     use hotwatch::Event;
 
+    run()?;
+
     if std::env::args().any(|arg| arg == "watch") {
         fn handler(event: Event) -> Flow {
             eprint!("{:?} ... ", event);
