@@ -2,7 +2,6 @@
 * Washington State: chapter 2, "running past Mount Rainier"
 * Virginia + Virginia Tech(?): chapter 2, "how could it possibly"
 * Georgia Southern + Syracuse: chapter 2, "they don't give a shit"
-* Bowling Green: chapter 6, "and it just barely counts"
 * Northern Illinois + Western Kentucky+ chapter 8
 * Vanderbilt + Tennessee + Ole Miss(?) intersection: chapter 9
 * Troy: chapter 10
@@ -20,6 +19,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Ball State
 * Baylor
 * Boise State
+* Bowling Green
 * Central Michigan
 * Charlotte
 * Cincinnati
