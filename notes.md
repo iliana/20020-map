@@ -31,6 +31,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Grambling State
 * Illinois
 * Indiana
+* Iowa
 * Iowa State
 * Kansas
 * Kansas State
