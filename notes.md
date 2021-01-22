@@ -18,6 +18,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Arkansas-Pine Bluff
 * BYU
 * Ball State
+* Baylor
 * Boise State
 * Central Michigan
 * Charlotte
