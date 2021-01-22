@@ -29,6 +29,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Georgia State
 * Georgia Tech
 * Grambling State
+* Illinois
 * Indiana
 * Iowa State
 * Kansas
