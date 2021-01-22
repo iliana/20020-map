@@ -8,6 +8,36 @@
 			<width>2</width>
 		</LineStyle>
 	</Style>
+	<Style id="inline3">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="inline2">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_open-diamond">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="inline4">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
 	<StyleMap id="inline0">
 		<Pair>
 			<key>normal</key>
@@ -18,6 +48,18 @@
 			<styleUrl>#inline3</styleUrl>
 		</Pair>
 	</StyleMap>
+	<Style id="sh_open-diamond">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<StyleMap id="inline1">
 		<Pair>
 			<key>normal</key>
@@ -28,59 +70,22 @@
 			<styleUrl>#inline2</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="inline2">
-		<LineStyle>
-			<color>ff0000ff</color>
-			<width>2</width>
-		</LineStyle>
-	</Style>
-	<Style id="s_ylw-pushpin_hl">
-		<IconStyle>
-			<scale>1.4</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
-			</Icon>
-		</IconStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
-	<Style id="inline3">
-		<LineStyle>
-			<color>ff0000ff</color>
-			<width>2</width>
-		</LineStyle>
-	</Style>
-	<Style id="s_ylw-pushpin">
-		<IconStyle>
-			<scale>1.2</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
-			</Icon>
-		</IconStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
-	<StyleMap id="m_ylw-pushpin">
+	<StyleMap id="msn_open-diamond">
 		<Pair>
 			<key>normal</key>
-			<styleUrl>#s_ylw-pushpin</styleUrl>
+			<styleUrl>#sn_open-diamond</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
-			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+			<styleUrl>#sh_open-diamond</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="inline4">
-		<LineStyle>
-			<color>ff0000ff</color>
-			<width>2</width>
-		</LineStyle>
-	</Style>
 	<Folder>
 		<name>BYU</name>
 		<open>1</open>
 		<Placemark>
 			<name>Line Measure</name>
+			<visibility>0</visibility>
 			<styleUrl>#inline0</styleUrl>
 			<LineString>
 				<tessellate>1</tessellate>
@@ -91,6 +96,7 @@
 		</Placemark>
 		<Placemark>
 			<name>Line Measure</name>
+			<visibility>0</visibility>
 			<styleUrl>#inline1</styleUrl>
 			<LineString>
 				<tessellate>1</tessellate>
@@ -100,20 +106,20 @@
 			</LineString>
 		</Placemark>
 		<Placemark>
-			<name>ch 00:07:46.232</name>
+			<name>ch6 &quot;and it misses the BYU-UNC intersection by ...&quot;</name>
 			<LookAt>
-				<longitude>-111.6808574111085</longitude>
-				<latitude>35.83734028001361</latitude>
+				<longitude>-111.5998243745588</longitude>
+				<latitude>48.41550234814454</latitude>
 				<altitude>0</altitude>
-				<heading>-92.26568509336349</heading>
-				<tilt>73.42333949348401</tilt>
-				<range>3341.435397897897</range>
+				<heading>-55.89605407179103</heading>
+				<tilt>0</tilt>
+				<range>299.1921550721403</range>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</LookAt>
-			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<styleUrl>#msn_open-diamond</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-111.6832060671512,35.82733269545989,0</coordinates>
+				<coordinates>-111.5997121916341,48.41610124353383,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>

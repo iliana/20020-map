@@ -2,6 +2,18 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>North Carolina.kml</name>
+	<Style id="sn_open-diamond">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
 	<Style id="s_ylw-pushpin_hl">
 		<IconStyle>
 			<scale>1.4</scale>
@@ -18,16 +30,6 @@
 			</Icon>
 		</IconStyle>
 	</Style>
-	<Style id="s_ylw-pushpin_hl0">
-		<IconStyle>
-			<scale>1.4</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
-			</Icon>
-		</IconStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
@@ -38,29 +40,32 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
-	<Style id="s_ylw-pushpin0">
+	<Style id="sh_open-diamond">
 		<IconStyle>
-			<scale>1.2</scale>
+			<scale>1.4</scale>
 			<Icon>
 				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
 			</Icon>
 		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
 		<ListStyle>
 		</ListStyle>
 	</Style>
-	<StyleMap id="m_ylw-pushpin0">
+	<StyleMap id="msn_open-diamond">
 		<Pair>
 			<key>normal</key>
-			<styleUrl>#s_ylw-pushpin0</styleUrl>
+			<styleUrl>#sn_open-diamond</styleUrl>
 		</Pair>
 		<Pair>
 			<key>highlight</key>
-			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+			<styleUrl>#sh_open-diamond</styleUrl>
 		</Pair>
 	</StyleMap>
 	<Folder>
 		<name>North Carolina</name>
 		<open>1</open>
+		<description>[[navarro::centerfit]]</description>
 		<Placemark>
 			<name>Untitled Placemark</name>
 			<visibility>0</visibility>
@@ -242,20 +247,20 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<name>ch9 00:01:35.028</name>
+			<name>ch6 &quot;and it misses the BYU-UNC intersection by ...&quot;</name>
 			<LookAt>
-				<longitude>-86.99045437767181</longitude>
-				<latitude>38.95813976247423</latitude>
+				<longitude>-111.5998872495645</longitude>
+				<latitude>48.41473203131698</latitude>
 				<altitude>0</altitude>
-				<heading>-6.398617408580388</heading>
-				<tilt>0.2790903002367795</tilt>
-				<range>600.2671692118877</range>
+				<heading>-55.89610109893645</heading>
+				<tilt>0</tilt>
+				<range>194.1333905055388</range>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
 			</LookAt>
-			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<styleUrl>#msn_open-diamond</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-86.99093345642326,38.95908795547264,0</coordinates>
+				<coordinates>-111.5999764651517,48.41476795272868,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>

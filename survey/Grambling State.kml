@@ -2,16 +2,6 @@
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
 <Document>
 	<name>Grambling State.kml</name>
-	<Style id="s_ylw-pushpin_hl">
-		<IconStyle>
-			<scale>1.4</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
-			</Icon>
-		</IconStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
 	<StyleMap id="m_ylw-pushpin">
 		<Pair>
 			<key>normal</key>
@@ -22,19 +12,29 @@
 			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
 		</Pair>
 	</StyleMap>
-	<StyleMap id="msn_open-diamond">
-		<Pair>
-			<key>normal</key>
-			<styleUrl>#sn_open-diamond</styleUrl>
-		</Pair>
-		<Pair>
-			<key>highlight</key>
-			<styleUrl>#sh_open-diamond</styleUrl>
-		</Pair>
-	</StyleMap>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
 	<Style id="sn_open-diamond">
 		<IconStyle>
 			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="sh_open-diamond">
+		<IconStyle>
+			<scale>1.4</scale>
 			<Icon>
 				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
 			</Icon>
@@ -51,24 +51,21 @@
 				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
 			</Icon>
 		</IconStyle>
-		<ListStyle>
-		</ListStyle>
 	</Style>
-	<Style id="sh_open-diamond">
-		<IconStyle>
-			<scale>1.4</scale>
-			<Icon>
-				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
-			</Icon>
-		</IconStyle>
-		<BalloonStyle>
-		</BalloonStyle>
-		<ListStyle>
-		</ListStyle>
-	</Style>
+	<StyleMap id="msn_open-diamond">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_open-diamond</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_open-diamond</styleUrl>
+		</Pair>
+	</StyleMap>
 	<Folder>
 		<name>Grambling State</name>
 		<open>1</open>
+		<description>[[navarro::centerfit]]</description>
 		<Style>
 			<ListStyle>
 				<listItemType>check</listItemType>
@@ -255,20 +252,20 @@
 			</Point>
 		</Placemark>
 		<Placemark>
-			<name>ch12 00:07:01.854</name>
-			<Camera>
-				<longitude>-97.00622132012072</longitude>
-				<latitude>36.12814923311672</latitude>
-				<altitude>406.5526603854061</altitude>
-				<heading>-91.0228895581687</heading>
-				<tilt>0.1732305939897236</tilt>
-				<roll>-1.869088111999464</roll>
+			<name>ch6 &quot;and it misses the BYU-UNC intersection by...&quot;</name>
+			<LookAt>
+				<longitude>-111.6004996576037</longitude>
+				<latitude>48.41468667449367</latitude>
+				<altitude>0</altitude>
+				<heading>-55.89655915961134</heading>
+				<tilt>0</tilt>
+				<range>299.954443148531</range>
 				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
-			</Camera>
+			</LookAt>
 			<styleUrl>#msn_open-diamond</styleUrl>
 			<Point>
 				<gx:drawOrder>1</gx:drawOrder>
-				<coordinates>-97.00612821496915,36.12816225398504,0</coordinates>
+				<coordinates>-111.6010949265463,48.41481239617661,0</coordinates>
 			</Point>
 		</Placemark>
 	</Folder>
