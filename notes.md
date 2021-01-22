@@ -2,7 +2,6 @@
 * Washington State: chapter 2, "running past Mount Rainier"
 * Virginia + Virginia Tech(?): chapter 2, "how could it possibly"
 * Northern Illinois + Western Kentucky+ chapter 8
-* Vanderbilt + Tennessee + Ole Miss(?) intersection: chapter 9
 * Troy: chapter 10
 
 ## High-confidence fields
@@ -52,4 +51,5 @@ These are fields I've been able to cross-check accurately from images / video in
 * Stanford
 * Tennessee
 * UAB
+* Vanderbilt
 * Washington
