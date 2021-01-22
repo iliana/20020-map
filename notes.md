@@ -1,5 +1,4 @@
 ## Story notes
-* Washington State: chapter 2, "running past Mount Rainier"
 * Virginia + Virginia Tech(?): chapter 2, "how could it possibly"
 * Northern Illinois + Western Kentucky+ chapter 8
 * Troy: chapter 10
@@ -53,3 +52,4 @@ These are fields I've been able to cross-check accurately from images / video in
 * UAB
 * Vanderbilt
 * Washington
+* Washington State
