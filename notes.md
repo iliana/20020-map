@@ -9,6 +9,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Air Force
 * Alabama A&M
 * Alabama State
+* Arkansas
 * Arkansas State
 * Arkansas-Pine Bluff
 * BYU
