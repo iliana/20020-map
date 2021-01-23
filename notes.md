@@ -49,6 +49,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * New Mexico State
 * North Texas
 * Northern Illinois
+* Notre Dame
 * Oklahoma
 * Oklahoma State
 * Ole Miss
