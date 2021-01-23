@@ -41,6 +41,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Louisville
 * Miami (Ohio)
 * Michigan State
+* Middle Tennessee
 * Mississippi State
 * Missouri
 * Nevada
