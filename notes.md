@@ -45,6 +45,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Missouri
 * Nevada
 * New Mexico
+* New Mexico State
 * Oklahoma
 * Oklahoma State
 * Ole Miss
