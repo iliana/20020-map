@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>New Mexico.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>New Mexico</name>
+		<open>1</open>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.6282498457103</longitude>
+				<latitude>35.06728836983279</latitude>
+				<altitude>0</altitude>
+				<heading>88.34947248493998</heading>
+				<tilt>0</tilt>
+				<range>6.885874827750235</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6282463598294,35.0673006090655,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.6282549908337</longitude>
+				<latitude>35.06712765501613</latitude>
+				<altitude>0</altitude>
+				<heading>88.34946952887269</heading>
+				<tilt>0</tilt>
+				<range>6.851316198445601</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6282469150001,35.06713559604508,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.628249531145</longitude>
+				<latitude>35.06695441951108</latitude>
+				<altitude>0</altitude>
+				<heading>88.34947266564546</heading>
+				<tilt>0</tilt>
+				<range>6.80214557072788</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6282469039897,35.06697108678326,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.628254784641</longitude>
+				<latitude>35.06679735616484</latitude>
+				<altitude>0</altitude>
+				<heading>88.34946964733589</heading>
+				<tilt>0</tilt>
+				<range>6.833164069319261</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6282482528027,35.06680667544579,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.62824651832</longitude>
+				<latitude>35.06663062188176</latitude>
+				<altitude>0</altitude>
+				<heading>88.34947439658474</heading>
+				<tilt>0</tilt>
+				<range>6.891139423736679</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6282482717703,35.0666414404114,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.6283816129935</longitude>
+				<latitude>35.06663484095443</latitude>
+				<altitude>0</altitude>
+				<heading>88.34939678085883</heading>
+				<tilt>0</tilt>
+				<range>6.936037809615993</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6283820317085,35.0666423726819,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.6283879383005</longitude>
+				<latitude>35.06681347380259</latitude>
+				<altitude>0</altitude>
+				<heading>88.34939314678977</heading>
+				<tilt>0</tilt>
+				<range>6.90207242146806</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6283809374547,35.06680705159883,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.6283890520076</longitude>
+				<latitude>35.06696190151354</latitude>
+				<altitude>0</altitude>
+				<heading>88.34939250691167</heading>
+				<tilt>0</tilt>
+				<range>6.916431007201392</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6283809561566,35.06697128817208,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.6283880674165</longitude>
+				<latitude>35.06712186502556</latitude>
+				<altitude>0</altitude>
+				<heading>88.3493930725964</heading>
+				<tilt>0</tilt>
+				<range>6.934177131113827</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6283800339288,35.06713624289353,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Placemark</name>
+			<LookAt>
+				<longitude>-106.6283784451673</longitude>
+				<latitude>35.06729617425304</latitude>
+				<altitude>0</altitude>
+				<heading>88.3493986009445</heading>
+				<tilt>0</tilt>
+				<range>6.96212337416209</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.6283796489172,35.06730115419538,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>ch12 00:07:30.883</name>
+			<open>1</open>
+			<Camera>
+				<longitude>-106.6311023386699</longitude>
+				<latitude>35.9521173646182</latitude>
+				<altitude>3236.857684964216</altitude>
+				<heading>-89.42382569719102</heading>
+				<tilt>0.09271648840030165</tilt>
+				<roll>1.088637854031289</roll>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</Camera>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-106.627806506485,35.95885455490595,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
