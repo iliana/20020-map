@@ -36,9 +36,9 @@ pub fn default(kml: &str) -> Survey {
         };
     }
 
-    if team!("Stanford") || team!("BYU") {
+    if team!("Stanford") || team!("BYU") || team!("UNLV") {
         stanford(kml)
-    } else if team!("Syracuse") {
+    } else if team!("Syracuse") || team!("UTSA") {
         syracuse(kml)
     } else if kml.contains("<LineString>") {
         sidelines_and_50(kml)
@@ -159,7 +159,7 @@ fn syracuse(kml: &str) -> Survey {
     };
     let sidelines = lines(kml).collect_tuple::<(_, _)>().unwrap();
 
-    sidelines_and_50_inner(fifty, sidelines, points, false)
+    sidelines_and_50_inner(fifty, sidelines, points, config(kml, "centerfit"))
 }
 
 // =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=   =^..^=

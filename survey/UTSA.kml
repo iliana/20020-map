@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>UTSA.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="inline3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="inline17">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline81</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/open-diamond.png</href>
+			</Icon>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<Style id="inline11">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="inline1">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Style id="inline81">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>UTSA</name>
+		<open>1</open>
+		<description>[[navarro::centerfit]]</description>
+		<Placemark>
+			<LookAt>
+				<longitude>-98.47985466122091</longitude>
+				<latitude>29.41687659282561</latitude>
+				<altitude>6.192815119935804</altitude>
+				<heading>90.49438926135703</heading>
+				<tilt>60.12076843999436</tilt>
+				<range>56.36481142282915</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-98.47986573261498,29.41688059005571,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<LookAt>
+				<longitude>-98.47793418467549</longitude>
+				<latitude>29.41686314751356</latitude>
+				<altitude>2.81253646940252</altitude>
+				<heading>-91.46859238749875</heading>
+				<tilt>57.99118655104683</tilt>
+				<range>62.59442301956672</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-98.47791570856278,29.41688138679736,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Line Measure</name>
+			<styleUrl>#inline17</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					-98.47864688325595,29.41737977260899,200.8829196203123 -98.47864708189326,29.41655481311061,200.8714920782182 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>Line Measure</name>
+			<styleUrl>#inline3</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					-98.47914942776849,29.41737985949178,200.7746412732587 -98.47914946678721,29.41655492051706,200.8379302115239 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>ch12 00:07:06.326</name>
+			<Camera>
+				<longitude>-98.47990246131126</longitude>
+				<latitude>36.09768097909632</latitude>
+				<altitude>4380.534106814833</altitude>
+				<heading>-105.8067036585095</heading>
+				<tilt>0.01967871745415149</tilt>
+				<roll>-13.80024919787553</roll>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</Camera>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-98.47893680902698,36.10356475925748,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

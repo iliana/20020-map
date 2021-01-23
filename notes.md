@@ -55,12 +55,29 @@ These are fields I've been able to cross-check accurately from images / video in
 * Ole Miss
 * Oregon
 * Oregon State
+* Prairie View A&M
 * Purdue
 * San Diego State
+* Southern Miss
 * Stanford
+* TCU
 * Tennessee
+* Texas
+* Texas A&M
+* Texas State
+* Texas Tech
 * Troy
 * UAB
+* UNLV
+* USC
+* UTEP
+* UTSA
+* Utah
+* Utah State
 * Vanderbilt
 * Washington
 * Washington State
+* Western Kentucky
+* Western Michigan
+* Wisconsin
+* Wyoming
