@@ -46,6 +46,7 @@ These are fields I've been able to cross-check accurately from images / video in
 * Nevada
 * New Mexico
 * New Mexico State
+* North Texas
 * Northern Illinois
 * Oklahoma
 * Oklahoma State
